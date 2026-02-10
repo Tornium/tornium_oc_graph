@@ -24,14 +24,14 @@ static const NodeMap mob_mentality {
 {"_A5F_", TerminalNode(0)},
 {"_A5_C1_", Node([](const SuccessMap &m){ }, "_A7_C1_", "_A5_C2_")},
 {"_A5_C2_", Node([](const SuccessMap &m){ }, "_A7S2_", "_A5F_")},
-{"_A7S2_", TerminalNode($1,312,000),
-{"_A7S_", TerminalNode($1,414,000),
+{"_A7S2_", TerminalNode(1312000)},
+{"_A7S_", TerminalNode(1414000)},
 {"_A7_C1_", Node([](const SuccessMap &m){ }, "_A7S_", "_A7S2_")},
 {"_B1_C1_", Node([](const SuccessMap &m){ }, "_B2S_", "_B3S_")},
-{"_B2S_", TerminalNode($1,191,000),
-{"_B3S_", TerminalNode($1,063,000),
+{"_B2S_", TerminalNode(1191000)},
+{"_B3S_", TerminalNode(1063000)},
 {"_D1_C1_", Node([](const SuccessMap &m){ }, "_D3S_", "_D2F_")},
 {"_D2F_", TerminalNode(0)},
-{"_D3S_", TerminalNode($741,000)
+{"_D3S_", TerminalNode(741000)}
 };
 #endif

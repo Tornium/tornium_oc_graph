@@ -20,21 +20,21 @@ static const NodeMap leave_no_trace {
 {"_A4_C2_", Node([](const SuccessMap &m){ }, "_A6_C1_", "_A4F_")},
 {"_A5_C1_", Node([](const SuccessMap &m){ }, "_A7_C1_", "_A6_C1_")},
 {"_A6F_", TerminalNode(0)},
-{"_A6S_", TerminalNode($8,904,000),
+{"_A6S_", TerminalNode(8904000)},
 {"_A6_C1_", Node([](const SuccessMap &m){ }, "_A8_C1_", "_A6_C2_")},
 {"_A6_C2_", Node([](const SuccessMap &m){ }, "_A8_C1_", "_A6_C3_")},
 {"_A6_C3_", Node([](const SuccessMap &m){ }, "_A6S_", "_A6F_")},
-{"_A7S2_", TerminalNode($10,364,000),
-{"_A7S_", TerminalNode($13,366,000),
+{"_A7S2_", TerminalNode(10364000)},
+{"_A7S_", TerminalNode(13366000)},
 {"_A7_C1_", Node([](const SuccessMap &m){ }, "_A7S_", "_A7S2_")},
-{"_A8S1_", TerminalNode($10,011,000),
-{"_A8S2_", TerminalNode($9,938,000),
+{"_A8S1_", TerminalNode(10011000)},
+{"_A8S2_", TerminalNode(9938000)},
 {"_A8_C1_", Node([](const SuccessMap &m){ }, "_A8S1_", "_A8S2_")},
 {"_B1F_", TerminalNode(0)},
 {"_B1_C1_", Node([](const SuccessMap &m){ }, "_B2_C1_", "_B1_C2_")},
 {"_B1_C2_", Node([](const SuccessMap &m){ }, "_B2_C1_", "_B1F_")},
 {"_B2F_", TerminalNode(0)},
 {"_B2_C1_", Node([](const SuccessMap &m){ }, "_B3S_", "_B2F_")},
-{"_B3S_", TerminalNode($7,637,000)
+{"_B3S_", TerminalNode(7637000)}
 };
 #endif

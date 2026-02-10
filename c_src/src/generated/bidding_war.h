@@ -26,12 +26,12 @@ static const NodeMap bidding_war {
 {"_A5F_", TerminalNode(0)},
 {"_A5_C1_", Node([](const SuccessMap &m){ }, "_A6_C1_", "_A5_C2_")},
 {"_A5_C2_", Node([](const SuccessMap &m){ }, "_A6_C2_", "_A5F_")},
-{"_A6S2_", TerminalNode($78,511,000),
-{"_A6S_", TerminalNode($92,173,000),
+{"_A6S2_", TerminalNode(78511000)},
+{"_A6S_", TerminalNode(92173000)},
 {"_A6_C1_", Node([](const SuccessMap &m){ }, "_A7_C1_", "_A6_C2_")},
 {"_A6_C2_", Node([](const SuccessMap &m){ }, "_A6S_", "_A6S2_")},
 {"_A7_C1_", Node([](const SuccessMap &m){ }, "_A8S_", "_A8S2_")},
-{"_A8S2_", TerminalNode($101,236,000),
-{"_A8S_", TerminalNode($131,852,000)
+{"_A8S2_", TerminalNode(101236000)},
+{"_A8S_", TerminalNode(131852000)}
 };
 #endif

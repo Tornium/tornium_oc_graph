@@ -96,10 +96,69 @@ defmodule Tornium.OC.Graph do
       edges: nil,
       start?: false,
       decision?: false,
-      terminal?: String.contains?(node_text, "Rewards: ~"),
+      terminal?: String.contains?(node_text, "Rewards: "),
       text: node_text,
-      reward: node_text |> String.split("Rewards: ~") |> Enum.at(1)
+      reward: parse_reward(node_text)
     }
+  end
+
+  # TODO: Determine how to handle items
+  @spec parse_reward(node_text :: String.t()) :: non_neg_integer() | term()
+  defp parse_reward(node_text) when is_binary(node_text) do
+    reward_string =
+      node_text
+      |> String.split(["Rewards: ~", "Rewards: "])
+      |> Enum.at(1)
+
+    case reward_string do
+      nil ->
+        nil
+
+      "$" <> money_string ->
+        money_string
+        |> String.split(",")
+        |> Enum.join("")
+        |> String.to_integer()
+
+      "Respect: " <> _ = respect_scope_money_string ->
+        case String.split(respect_scope_money_string, ", ", parts: 3) do
+          ["Respect: " <> _, "Scope: " <> _, "Money: " <> money_string] ->
+            money_string 
+            |> String.split(",")
+            |> Enum.join("")
+            |> String.to_integer()
+
+          ["Respect: " <> _, "Scope: " <> _, "Items: " <> item_string] ->
+            item_string
+            |> String.split("Items: ")
+            |> Enum.at(1)
+            # TODO: Impelment this
+
+            nil
+
+          ["Respect: " <> _, "Money: " <> money_string] ->
+            money_string 
+            |> String.split(",")
+            |> Enum.join("")
+            |> String.to_integer()
+
+          ["Respect: ~$" <> money_string] ->
+            # This is a solution to a bug in allenone's site
+            money_string 
+            |> String.split(",")
+            |> Enum.join("")
+            |> String.to_integer()
+        end
+
+      item_quantity_string ->
+        # eg {"_A6S_", TerminalNode(Xanax x30)
+        # TODO: Get sell value of the item
+
+        case String.split(item_quantity_string, " x") do
+          [item_name, item_quantity] ->
+            nil
+        end
+    end
   end
 
   @spec parse_edge(value :: String.t()) :: Tornium.OC.Graph.Edge.t()

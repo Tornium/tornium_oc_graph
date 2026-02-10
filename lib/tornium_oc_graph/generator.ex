@@ -60,7 +60,7 @@ defmodule Tornium.OC.Graph.Generator do
         terminal?: true,
         reward: reward
       }) do
-    ~e"{\"<%= node_name %>\", TerminalNode(<%= reward %>)"
+    ~e"{\"<%= node_name %>\", TerminalNode(<%= reward %>)}"
   end
 
   def render_node(%Tornium.OC.Graph.Node{name: node_name, decision?: true} = node) do

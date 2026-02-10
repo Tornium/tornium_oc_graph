@@ -25,14 +25,14 @@ static const NodeMap guardian_ángels {
 {"_A6_C1_", Node([](const SuccessMap &m){ }, "_A7S_", "_A6_C2_")},
 {"_A6_C2_", Node([](const SuccessMap &m){ }, "_A8S_", "_A6_C3_")},
 {"_A6_C3_", Node([](const SuccessMap &m){ }, "_A9S_", "_A6F_")},
-{"_A7S_", TerminalNode(0)},
-{"_A8S_", TerminalNode(0)},
-{"_A9S_", TerminalNode(0)},
+{"_A7S_", TerminalNode(8551000)},
+{"_A8S_", TerminalNode(7537000)},
+{"_A9S_", TerminalNode(6296000)},
 {"_B4F_", TerminalNode(0)},
 {"_B4_C1_", Node([](const SuccessMap &m){ }, "_B5_C1_", "_B4_C2_")},
 {"_B4_C2_", Node([](const SuccessMap &m){ }, "_B5_C1_", "_B4F_")},
 {"_B5F_", TerminalNode(0)},
 {"_B5_C1_", Node([](const SuccessMap &m){ }, "_B6S_", "_B5F_")},
-{"_B6S_", TerminalNode(0)}
+{"_B6S_", TerminalNode(5190000)}
 };
 #endif

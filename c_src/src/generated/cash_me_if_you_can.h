@@ -26,7 +26,7 @@ inline const NodeMap cash_me_if_you_can {
 {"_A7S_", TerminalNode(1554000)},
 {"_A8S_", TerminalNode(1395000)},
 {"_B1F_", TerminalNode(0)},
-{"_B1_C1_", Node([](const SuccessMap &m){ static_assert(false, "Missing data: This needs to be manually entered"); }, "_B2_C1_", "_B1F_")},
+{"_B1_C1_", Node([](const SuccessMap &m){ return (m.at("thief_1") + m.at("thief_2") + m.at("lookout_1")) / 3; }, "_B2_C1_", "_B1F_")},
 {"_B2F_", TerminalNode(0)},
 {"_B2_C1_", Node([](const SuccessMap &m){ return m.at("lookout_1"); }, "_B3S_", "_B2F_")},
 {"_B3S_", TerminalNode(1167000)},

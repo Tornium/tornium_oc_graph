@@ -21,7 +21,7 @@ inline const NodeMap crane_reaction {
 {"_A2F_", TerminalNode(0)},
 {"_A1F_", TerminalNode(0)},
 {"_A5_C1_", Node([](const SuccessMap &m){ return (m.at("engineer_1") + m.at("bomber_1"))/2; }, "_A6_C1_", "_A5_C2_")},
-{"_B7_C1_", Node([](const SuccessMap &m){ static_assert(false, "Missing data: This needs to be manually entered"); }, "_B7S_", "_B7_C2_")},
+{"_B7_C1_", Node([](const SuccessMap &m){ return (m.at("muscle_1") + m.at("muscle_2") + m.at("engineer_1") + m.at("bomber_1") + m.at("lookout_1") + m.at("sniper_1")) / 6; }, "_B7S_", "_B7_C2_")},
 {"_A7_C2_", Node([](const SuccessMap &m){ return m.at("bomber_1"); }, "_A8S2_", "_A7_C3_")},
 {"_A4_C2_", Node([](const SuccessMap &m){ return (m.at("lookout_1") + m.at("sniper_1"))/2; }, "_A5_C1_", "_A4_C3_")},
 {"_A8S2_", TerminalNode(0)},

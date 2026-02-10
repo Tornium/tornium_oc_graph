@@ -12,7 +12,7 @@ inline const NodeMap bidding_war {
 {"_A1_C2_", Node([](const SuccessMap &m){ return (m.at("bomber_1") + m.at("bomber_2"))/2; }, "_A2_C1_", "_A1_C3_")},
 {"_A1_C3_", Node([](const SuccessMap &m){ return (m.at("driver_1") + m.at("bomber_1"))/2; }, "_A2_C1_", "_A1F_")},
 {"_A2F_", TerminalNode(0)},
-{"_A2_C1_", Node([](const SuccessMap &m){ static_assert(false, "Missing data: This needs to be manually entered"); }, "_A3_C1_", "_A2_C2_")},
+{"_A2_C1_", Node([](const SuccessMap &m){ return m.at("driver_1"); }, "_A3_C1_", "_A2_C2_")},
 {"_A2_C2_", Node([](const SuccessMap &m){ return m.at("driver_1"); }, "_A3_C1_", "_A2_C3_")},
 {"_A2_C3_", Node([](const SuccessMap &m){ return m.at("driver_1"); }, "_A3_C1_", "_A2F_")},
 {"_A3F_", TerminalNode(0)},

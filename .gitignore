@@ -22,6 +22,8 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 tornium_oc_graph-*.tar
 
+.tool-versions
+
 # Editors
 .vscode/
 .idea/

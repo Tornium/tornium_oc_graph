@@ -22,15 +22,17 @@ defmodule Tornium.OC.Graph.Generator do
   @spec render_template(graph :: [Tornium.OC.Graph.Node.t()], oc_name :: String.t()) :: String.t()
   def render_template(graph, oc_name) when is_list(graph) and is_binary(oc_name) do
     ~e"""
-    #ifndef <%= oc_name |> String.upcase() %>
-    #define <%= oc_name |> String.upcase() %>
+    #ifndef <%= oc_name |> String.upcase() %>_H
+    #define <%= oc_name |> String.upcase() %>_H
 
     #include "node.h"
 
     using namespace tornium::oc::graph;
 
-    static const NodeMap <%= oc_name %> {
+    namespace tornium::oc::graph {
+    inline const NodeMap <%= oc_name %> {
     <%= graph |> Enum.map(&render_node/1) |> Enum.reject(& &1 == "") |> Enum.join(",\n") %>
+    };
     };
     #endif
     """
@@ -40,8 +42,7 @@ defmodule Tornium.OC.Graph.Generator do
   def render_node(%Tornium.OC.Graph.Node{start?: true} = node) do
     {success_node, failure_node} = Tornium.OC.Graph.Node.get_next(node)
 
-    # TODO: handle inner of successmap lambda
-    ~e"{\"START\", Node([](const SuccessMap &m){ }, \"<%= success_node %>\", \"<%= failure_node %>\")}"
+    ~e"{\"START\", Node([](const SuccessMap &m){ <%= node |> Tornium.OC.Graph.Node.get_positions() |> render_success_calculation() %> }, \"<%= success_node %>\", \"<%= failure_node %>\")}"
   end
 
   def render_node(%Tornium.OC.Graph.Node{
@@ -66,11 +67,30 @@ defmodule Tornium.OC.Graph.Generator do
   def render_node(%Tornium.OC.Graph.Node{name: node_name, decision?: true} = node) do
     {success_node, failure_node} = Tornium.OC.Graph.Node.get_next(node)
 
-    # TODO: handle inner of successmap lambda
-    ~e"{\"<%= node_name %>\", Node([](const SuccessMap &m){ }, \"<%= success_node %>\", \"<%= failure_node %>\")}"
+    ~e"{\"<%= node_name %>\", Node([](const SuccessMap &m){ <%= node |> Tornium.OC.Graph.Node.get_positions() |> render_success_calculation() %> }, \"<%= success_node %>\", \"<%= failure_node %>\")}"
   end
 
   # This is a temporary resolution for invalid nodes with outgoing edges that merge before a decision node but are considered a decision node.
-  def render_node(%Tornium.OC.Graph.Node{start?: false, terminal?: false, decision?: false}),
-    do: ""
+  def render_node(%Tornium.OC.Graph.Node{start?: false, terminal?: false, decision?: false}) do
+    ""
+  end
+
+  @spec render_success_calculation(positions :: [{String.t(), pos_integer()}]) :: String.t()
+  defp render_success_calculation([{position_name, position_index}] = _positions)
+       when is_binary(position_name) and is_integer(position_index) do
+    "return m.at(\"#{position_name}_#{position_index}\");"
+  end
+
+  defp render_success_calculation(positions) when is_list(positions) and positions != [] do
+    inner =
+      positions
+      |> Enum.map(fn {n, i} -> "m.at(\"#{n}_#{i}\")" end)
+      |> Enum.join(" + ")
+
+    ~e"return (<%= inner %>)/<%= length(positions) %>;"
+  end
+
+  defp render_success_calculation([] = _positions) do
+    "static_assert(false, \"Missing data: This needs to be manually entered\");"
+  end
 end

@@ -11,15 +11,71 @@ defmodule Tornium.OC.Graph.Node do
           reward: binary()
         }
 
+  @position_types [
+    "Muscle",
+    "Hacker",
+    "Imitator",
+    "Lookout",
+    "Pickpocket",
+    "Hustler",
+    "Sniper",
+    "Impersonator",
+    "Engineer",
+    "Robber",
+    "Picklock",
+    "Thief",
+    "Bomber",
+    "Enforcer",
+    "Looter",
+    "Cat Burglar",
+    "Cleaner",
+    "Assassin",
+    "Hijacker",
+    "Driver"
+  ]
+
   @spec get_next(node :: t()) :: {String.t() | nil, String.t() | nil}
   def get_next(%__MODULE__{edges: edges} = _node) when is_list(edges) do
     {
-      edges |> Enum.find(fn %Tornium.OC.Graph.Edge{label: label} -> label == "Pass" end) |> Map.get(:end_node),
-      edges |> Enum.find(fn %Tornium.OC.Graph.Edge{label: label} -> label == "Fail" end) |> Map.get(:end_node)
+      edges
+      |> Enum.find(fn %Tornium.OC.Graph.Edge{label: label} -> label == "Pass" end)
+      |> Map.get(:end_node),
+      edges
+      |> Enum.find(fn %Tornium.OC.Graph.Edge{label: label} -> label == "Fail" end)
+      |> Map.get(:end_node)
     }
   end
 
   def get_next(%__MODULE__{edges: edges} = _node) when is_nil(edges) do
     {nil, nil}
+  end
+
+  @spec get_positions(node :: t()) :: [{String.t(), pos_integer()}]
+  def get_positions(%__MODULE__{text: node_text} = _node) do
+    escaped =
+      @position_types
+      |> Enum.map(&String.downcase/1)
+      |> Enum.map(&Regex.escape/1)
+      |> Enum.join("|")
+
+    ~r/\b(#{escaped})(?:\s+#?\d+)?\b/
+    |> Regex.scan(node_text |> String.downcase())
+    |> Enum.map(&hd/1)
+    |> Enum.map(&map_position/1)
+  end
+
+  @spec map_position(position :: String.t()) ::
+          {position_name :: String.t(), position_index :: pos_integer()}
+  defp map_position(position) when is_binary(position) do
+    case Regex.scan(~r/^(.*?)(?:\s*#?\s*(\d+))?$/, position) do
+      [[_, position_name, "#" <> position_index]] ->
+        {position_name, String.to_integer(position_index)}
+
+      [[_, position_name, position_index]] ->
+        {position_name, String.to_integer(position_index)}
+
+      [[_, position_name]] ->
+        {position_name, 1}
+    end
   end
 end

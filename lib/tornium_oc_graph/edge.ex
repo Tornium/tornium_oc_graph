@@ -9,8 +9,8 @@ defmodule Tornium.OC.Graph.Edge do
   @type edge_label :: String.t() | nil
 
   @type t :: %__MODULE__{
-    start_node: String.t(),
-    end_node: String.t(),
-    label: edge_label()
-  }
+          start_node: String.t(),
+          end_node: String.t(),
+          label: edge_label()
+        }
 end

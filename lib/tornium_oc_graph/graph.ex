@@ -53,8 +53,6 @@ defmodule Tornium.OC.Graph do
     else
       parse_node(value)
     end
-
-    # |> IO.inspect(label: value)
   end
 
   @spec parse_node(value :: String.t()) :: Tornium.OC.Graph.Node.t()
@@ -123,7 +121,7 @@ defmodule Tornium.OC.Graph do
       "Respect: " <> _ = respect_scope_money_string ->
         case String.split(respect_scope_money_string, ", ", parts: 3) do
           ["Respect: " <> _, "Scope: " <> _, "Money: " <> money_string] ->
-            money_string 
+            money_string
             |> String.split(",")
             |> Enum.join("")
             |> String.to_integer()
@@ -132,19 +130,20 @@ defmodule Tornium.OC.Graph do
             item_string
             |> String.split("Items: ")
             |> Enum.at(1)
+
             # TODO: Impelment this
 
             nil
 
           ["Respect: " <> _, "Money: " <> money_string] ->
-            money_string 
+            money_string
             |> String.split(",")
             |> Enum.join("")
             |> String.to_integer()
 
           ["Respect: ~$" <> money_string] ->
             # This is a solution to a bug in allenone's site
-            money_string 
+            money_string
             |> String.split(",")
             |> Enum.join("")
             |> String.to_integer()
@@ -154,10 +153,9 @@ defmodule Tornium.OC.Graph do
         # eg {"_A6S_", TerminalNode(Xanax x30)
         # TODO: Get sell value of the item
 
-        case String.split(item_quantity_string, " x") do
-          [item_name, item_quantity] ->
-            nil
-        end
+        [item_name, item_quantity] = String.split(item_quantity_string, " x")
+
+        nil
     end
   end
 

@@ -23,7 +23,7 @@ defmodule TorniumOcGraph.MixProject do
     [
       {:elixir_make, "~> 0.4", runtime: false},
       {:fine, "~> 0.1", runtime: false},
-      {:req, "~> 0.5"},
+      {:req, "~> 0.5"}
     ]
   end
 

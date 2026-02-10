@@ -31,7 +31,13 @@ defmodule Tornium.OC.Graph.Node do
     "Cleaner",
     "Assassin",
     "Hijacker",
-    "Driver"
+    "Driver",
+    "Techie",
+    "Negotiator",
+    "Reviver",
+    "Interrogator",
+    "Arsonist",
+    "Kidnapper"
   ]
 
   @spec get_next(node :: t()) :: {String.t() | nil, String.t() | nil}

@@ -1,0 +1,66 @@
+From 54eba369f3672052ba046b4fed675fbaf4d12e40 Mon Sep 17 00:00:00 2001
+From: tiksan <webmaster@deek.sh>
+Date: Tue, 10 Feb 2026 15:39:34 -0600
+Subject: [PATCH] Manual changes to generted files
+
+Signed-off-by: tiksan <webmaster@deek.sh>
+---
+ c_src/src/generated/bidding_war.h        | 2 +-
+ c_src/src/generated/cash_me_if_you_can.h | 2 +-
+ c_src/src/generated/crane_reaction.h     | 2 +-
+ c_src/src/generated/snow_blind.h         | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/c_src/src/generated/bidding_war.h b/c_src/src/generated/bidding_war.h
+index 6483e9d..626ae44 100644
+--- a/c_src/src/generated/bidding_war.h
++++ b/c_src/src/generated/bidding_war.h
+@@ -12,7 +12,7 @@ inline const NodeMap bidding_war {
+ {"_A1_C2_", Node([](const SuccessMap &m){ return (m.at("bomber_1") + m.at("bomber_2"))/2; }, "_A2_C1_", "_A1_C3_")},
+ {"_A1_C3_", Node([](const SuccessMap &m){ return (m.at("driver_1") + m.at("bomber_1"))/2; }, "_A2_C1_", "_A1F_")},
+ {"_A2F_", TerminalNode(0)},
+-{"_A2_C1_", Node([](const SuccessMap &m){ static_assert(false, "Missing data: This needs to be manually entered"); }, "_A3_C1_", "_A2_C2_")},
++{"_A2_C1_", Node([](const SuccessMap &m){ return m.at("driver_1"); }, "_A3_C1_", "_A2_C2_")},
+ {"_A2_C2_", Node([](const SuccessMap &m){ return m.at("driver_1"); }, "_A3_C1_", "_A2_C3_")},
+ {"_A2_C3_", Node([](const SuccessMap &m){ return m.at("driver_1"); }, "_A3_C1_", "_A2F_")},
+ {"_A3F_", TerminalNode(0)},
+diff --git a/c_src/src/generated/cash_me_if_you_can.h b/c_src/src/generated/cash_me_if_you_can.h
+index 03d74b5..e017e9e 100644
+--- a/c_src/src/generated/cash_me_if_you_can.h
++++ b/c_src/src/generated/cash_me_if_you_can.h
+@@ -26,7 +26,7 @@ inline const NodeMap cash_me_if_you_can {
+ {"_A7S_", TerminalNode(1554000)},
+ {"_A8S_", TerminalNode(1395000)},
+ {"_B1F_", TerminalNode(0)},
+-{"_B1_C1_", Node([](const SuccessMap &m){ static_assert(false, "Missing data: This needs to be manually entered"); }, "_B2_C1_", "_B1F_")},
++{"_B1_C1_", Node([](const SuccessMap &m){ return (m.at("thief_1") + m.at("thief_2") + m.at("lookout_1")) / 3; }, "_B2_C1_", "_B1F_")},
+ {"_B2F_", TerminalNode(0)},
+ {"_B2_C1_", Node([](const SuccessMap &m){ return m.at("lookout_1"); }, "_B3S_", "_B2F_")},
+ {"_B3S_", TerminalNode(1167000)},
+diff --git a/c_src/src/generated/crane_reaction.h b/c_src/src/generated/crane_reaction.h
+index 639dd0e..e868205 100644
+--- a/c_src/src/generated/crane_reaction.h
++++ b/c_src/src/generated/crane_reaction.h
+@@ -21,7 +21,7 @@ inline const NodeMap crane_reaction {
+ {"_A2F_", TerminalNode(0)},
+ {"_A1F_", TerminalNode(0)},
+ {"_A5_C1_", Node([](const SuccessMap &m){ return (m.at("engineer_1") + m.at("bomber_1"))/2; }, "_A6_C1_", "_A5_C2_")},
+-{"_B7_C1_", Node([](const SuccessMap &m){ static_assert(false, "Missing data: This needs to be manually entered"); }, "_B7S_", "_B7_C2_")},
++{"_B7_C1_", Node([](const SuccessMap &m){ return (m.at("muscle_1") + m.at("muscle_2") + m.at("engineer_1") + m.at("bomber_1") + m.at("lookout_1") + m.at("sniper_1")) / 6; }, "_B7S_", "_B7_C2_")},
+ {"_A7_C2_", Node([](const SuccessMap &m){ return m.at("bomber_1"); }, "_A8S2_", "_A7_C3_")},
+ {"_A4_C2_", Node([](const SuccessMap &m){ return (m.at("lookout_1") + m.at("sniper_1"))/2; }, "_A5_C1_", "_A4_C3_")},
+ {"_A8S2_", TerminalNode(0)},
+-- 
+diff --git a/c_src/src/generated/snow_blind.h b/c_src/src/generated/snow_blind.h
+index 9e8e0ac..18703c5 100644
+--- a/c_src/src/generated/snow_blind.h
++++ b/c_src/src/generated/snow_blind.h
+@@ -18,7 +18,7 @@ inline const NodeMap snow_blind {
+ {"_A4F_", TerminalNode(0)},
+ {"_A4S_", TerminalNode(6226000)},
+ {"_A4_C1_", Node([](const SuccessMap &m){ return m.at("hustler_1"); }, "_A5_C1_", "_A4_C2_")},
+-{"_A4_C2_", Node([](const SuccessMap &m){ static_assert(false, "Missing data: This needs to be manually entered"); }, "_A5_C1_", "_A4_C3_")},
++{"_A4_C2_", Node([](const SuccessMap &m){ return (m.at("muscle_1") + m.at("muscle_2") + m.at("hustler_1") + m.at("impersonator_1")) / 4; }, "_A5_C1_", "_A4_C3_")},
+ {"_A4_C3_", Node([](const SuccessMap &m){ return m.at("hustler_1"); }, "_A4S_", "_A4F_")},
+ {"_A5F_", TerminalNode(0)},
+ {"_A5_C1_", Node([](const SuccessMap &m){ return m.at("hustler_1"); }, "_A6_C1_", "_A5_C2_")},

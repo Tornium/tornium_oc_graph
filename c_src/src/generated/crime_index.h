@@ -28,10 +28,8 @@
 #include "generated/stacking_the_deck.h"
 #include "generated/stage_fright.h"
 
-
-using namespace tornium::oc::graph;
-
-static const std::unordered_map<std::string, NodeMap> crime_index = {
+namespace tornium::oc::graph {
+inline const std::unordered_map<std::string, NodeMap> crime_index = {
 {"Ace in the Hole", ace_in_the_hole},
 {"Best of the Lot", best_of_the_lot},
 {"Bidding War", bidding_war},
@@ -56,5 +54,6 @@ static const std::unordered_map<std::string, NodeMap> crime_index = {
 {"Snow Blind", snow_blind},
 {"Stacking the Deck", stacking_the_deck},
 {"Stage Fright", stage_fright},
+};
 };
 #endif

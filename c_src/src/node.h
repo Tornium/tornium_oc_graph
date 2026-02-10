@@ -1,6 +1,7 @@
 #ifndef NODE_H
 #define NODE_H
 
+#include <cstdint>
 #include <functional>
 #include <string>
 #include <unordered_map>
@@ -16,12 +17,12 @@ typedef struct {
 } Node;
 
 typedef struct {
-    float value;
+    uint32_t value;
 } TerminalNode;
 
 typedef std::unordered_map<std::string, std::variant<Node, TerminalNode>> NodeMap;
 
-float compute_expected_value(const NodeMap &nodes, const std::string &node_name, const SuccessMap &success_map);
+double compute_expected_value(const NodeMap &nodes, const std::string &node_name, const SuccessMap &success_map);
 };
 
 #endif

@@ -43,11 +43,11 @@ defmodule Mix.Tasks.Tornium.Oc.Graph.Generate do
     <%= for crime_name <- crime_names do %>#include "generated/<%= crime_name |> String.split(" ") |> Enum.map(&String.downcase/1) |> Enum.join("_") %>.h"
     <% end %>
 
-    using namespace tornium::oc::graph;
-
-    static const std::unordered_map<std::string, NodeMap> crime_index = {
+    namespace tornium::oc::graph {
+    inline const std::unordered_map<std::string, NodeMap> crime_index = {
     <%= for crime_name <- crime_names do %>{"<%= crime_name %>", <%= crime_name |> String.split(" ") |> Enum.map(&String.downcase/1) |> Enum.join("_") %>},
     <% end %>};
+    };
     #endif
     """
   end

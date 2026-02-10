@@ -30,7 +30,7 @@ defmodule Tornium.OC.Graph.Generator do
     using namespace tornium::oc::graph;
 
     static const NodeMap <%= oc_name %> {
-    <%= graph |> Enum.map(&render_node/1) |> Enum.join(",\n") %>
+    <%= graph |> Enum.map(&render_node/1) |> Enum.reject(& &1 == "") |> Enum.join(",\n") %>
     };
     #endif
     """

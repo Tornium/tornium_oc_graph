@@ -16,13 +16,9 @@ static const NodeMap gaslight_the_way {
 {"_A3F_", TerminalNode(0)},
 {"_A3_C1_", Node([](const SuccessMap &m){ }, "_A4_2_", "_A3_C2_")},
 {"_A3_C2_", Node([](const SuccessMap &m){ }, "_B8_C1_", "_A3F_")},
-,
-,
 {"_A4_C1_", Node([](const SuccessMap &m){ }, "_A4_C1P_", "_A4_C2_")},
-,
 {"_A4_C2_", Node([](const SuccessMap &m){ }, "_A4_C2P_", "_A5_C1_")},
 {"_A5_C1_", Node([](const SuccessMap &m){ }, "_A6_", "_B7_C1_")},
-,
 {"_A7S2_", TerminalNode(0)},
 {"_A7S_", TerminalNode(0)},
 {"_A7_C1_", Node([](const SuccessMap &m){ }, "_A7S_", "_A7S2_")},
@@ -30,7 +26,6 @@ static const NodeMap gaslight_the_way {
 {"_B7S_", TerminalNode(0)},
 {"_B7_C1_", Node([](const SuccessMap &m){ }, "_B7S_", "_B7S2_")},
 {"_B8F_", TerminalNode(0)},
-,
 {"_B8_C1_", Node([](const SuccessMap &m){ }, "_B8_C1P_", "_B8F_")},
 {"_B9S_", TerminalNode(0)}
 };

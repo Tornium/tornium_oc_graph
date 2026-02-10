@@ -20,7 +20,6 @@ static const NodeMap bidding_war {
 {"_A3_C3_", Node([](const SuccessMap &m){ }, "_A4_C1_", "_A3F_")},
 {"_A4F2_", TerminalNode(0)},
 {"_A4F_", TerminalNode(0)},
-,
 {"_A4_C1_", Node([](const SuccessMap &m){ }, "_A4_4_", "_A4_C2_")},
 {"_A4_C2_", Node([](const SuccessMap &m){ }, "_A4_4_", "_A4_C3_")},
 {"_A4_C3_", Node([](const SuccessMap &m){ }, "_A4F2_", "_A4F_")},

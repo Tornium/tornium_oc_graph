@@ -343,9 +343,32 @@ defmodule Tornium.OC.Graph do
         # Only one outgoing edge, continue jumping
         jump_to_meaningful(next_node, graph, acc)
 
-      %Tornium.OC.Graph.Node{} = node ->
-        # TODO: Properly handle nodes where there are multiple outgoing edges that merge before reaching a decision node.
-        {node, acc}
+      %Tornium.OC.Graph.Node{edges: edges, decision?: false} = _node when is_list(edges) ->
+        # There are multiple outgoing edges from a non-decision. We want to check if the edges
+        # are going to converge upon a non-decision node such that we can minimize it into one
+        # edge.
+
+        target_nodes =
+          Enum.map(edges, fn %Tornium.OC.Graph.Edge{end_node: next_node} ->
+            jump_to_meaningful(next_node, graph, acc)
+          end)
+
+        unique_target_node_names =
+          target_nodes
+          |> Enum.map(fn {node, _acc} -> node && node.name end)
+          |> Enum.uniq()
+
+        case unique_target_node_names do
+          [_single_target_node] ->
+            # All parallel edges converge to the same meaningful node
+            {target_node, _} = List.first(target_nodes)
+            {target_node, acc}
+
+          _ ->
+            # Edges diverge to different meaningful nodes; cannot reduce further.
+            # Return the current non-decision node as-is.
+            {current_node, acc}
+        end
     end
   end
 end

@@ -28,6 +28,7 @@
 #include "generated/stacking_the_deck.h"
 #include "generated/stage_fright.h"
 
+
 namespace tornium::oc::graph {
 inline const std::unordered_map<std::string, NodeMap> crime_index = {
 {"Ace in the Hole", ace_in_the_hole},

@@ -1,16 +1,25 @@
-# TorniumOcGraph
+# Tornium OC Graph
+OC scenario graphs as generated C++ code
 
-**TODO: Add description**
+Credit to [Allenone](https://www.torn.com/profiles.php?XID=2033011) for the original research into OC scenarios and for creating the [original
+graphs for OC scenarios](https://www.torn.com/forums.php#/p=threads&f=67&t=16458267).
+
+## Supported Languages
+- Elixir
+- C++
+- ~~Python~~ (coming soon)
+
+Other languages that are not supported can be made to work by linking the shared object generated
+when compiling this library to your application (depending on how your language's FFI works).
 
 ## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
+For installing for Elixir,the library can be installed through GitHub
 by adding `tornium_oc_graph` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:tornium_oc_graph, "~> 0.1.0"}
+    {:tornium_oc_graph, github: "Tornium/tornium_oc_graph"}
   ]
 end
 ```

@@ -1,10 +1,13 @@
 defmodule Tornium.OC.Graph.Pako do
   @moduledoc """
-  Decode for Mermaid's Pako encoded data
+  Decoder for Mermaid's Pako encoded data.
+
+  Based upon https://github.com/mermaid-js/mermaid-live-editor/discussions/1291
   """
 
-  # TODO: Determine return type
-  # TODO: Add docs
+  @doc """
+  Decode the Pako graph from a URL.
+  """
   @spec decode_pako(link :: URI.t() | String.t()) :: %{String.t() => String.t()}
   def decode_pako(link) when is_binary(link) do
     link

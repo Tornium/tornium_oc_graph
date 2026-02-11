@@ -2,13 +2,13 @@ defmodule Tornium.OC.Graph.Node do
   defstruct [:name, :edges, :start?, :decision?, :terminal?, :text, :reward]
 
   @type t :: %__MODULE__{
-          name: binary(),
+          name: String.t(),
           edges: [Tornium.OC.Graph.Edge.t()] | nil,
           start?: boolean(),
           decision?: boolean(),
           terminal?: boolean(),
-          text: binary(),
-          reward: binary()
+          text: String.t(),
+          reward: pos_integer() | nil
         }
 
   @position_types [

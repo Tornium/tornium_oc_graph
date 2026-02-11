@@ -26,14 +26,14 @@ inline const NodeMap best_of_the_lot {
 {"_A4_C3_", Node([](const SuccessMap &m){ return m.at("muscle_1"); }, "_B1_C1_", "_A4F_")},
 {"_A5_C1_", Node([](const SuccessMap &m){ return m.at("muscle_1"); }, "_A6S_", "_A5_C2_")},
 {"_A5_C2_", Node([](const SuccessMap &m){ return m.at("impersonator_1"); }, "_A7S_", "_A8S_")},
-{"_A6S_", TerminalNode(0)},
-{"_A7S_", TerminalNode(0)},
-{"_A8S_", TerminalNode(0)},
+{"_A6S_", TerminalNode(1900000)},
+{"_A7S_", TerminalNode(810000)},
+{"_A8S_", TerminalNode(1075000)},
 {"_B1F_", TerminalNode(0)},
 {"_B1_C1_", Node([](const SuccessMap &m){ return m.at("impersonator_1"); }, "_B2S_", "_B1_C2_")},
 {"_B1_C2_", Node([](const SuccessMap &m){ return (m.at("picklock_1") + m.at("muscle_1"))/2; }, "_B3S_", "_B1F_")},
-{"_B2S_", TerminalNode(0)},
-{"_B3S_", TerminalNode(0)}
+{"_B2S_", TerminalNode(1075000)},
+{"_B3S_", TerminalNode(810000)}
 };
 };
 #endif

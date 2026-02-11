@@ -11,13 +11,23 @@ defmodule Mix.Tasks.Tornium.Oc.Graph.Generate do
   def run(_argv) do
     {:ok, _} = Application.ensure_all_started(:req)
 
+    api_key =
+      System.get_env("TORN_API_KEY") ||
+        raise "The \"TORN_API_KEY\" environment variable is required"
+
+    items =
+      "https://api.torn.com/v2/torn/items?key=#{api_key}"
+      |> Req.get!()
+      |> Map.get(:body)
+      |> Map.get("items")
+
     Tornium.OC.Graph.Data.data_uris()
     |> Enum.reject(fn {_oc_name, uri} -> is_nil(uri) end)
     |> Enum.each(fn {oc_name, oc_uri} ->
       oc_uri
       |> Tornium.OC.Graph.Pako.decode_pako()
       |> Map.fetch!("code")
-      |> Tornium.OC.Graph.decode_code()
+      |> Tornium.OC.Graph.decode_code(items)
       |> Tornium.OC.Graph.build_graph()
       |> Tornium.OC.Graph.reduce()
       |> Tornium.OC.Graph.Generator.generate_cpp(oc_name)

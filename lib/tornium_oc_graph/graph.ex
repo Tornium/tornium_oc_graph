@@ -24,12 +24,14 @@ defmodule Tornium.OC.Graph do
   @doc """
   Decode the mermaid code into a list of elements.
   """
-  @spec decode_code(code :: String.t()) :: [Tornium.OC.Graph.Node.t() | Tornium.OC.Graph.Edge.t()]
-  def decode_code(code) when is_binary(code) do
+  @spec decode_code(code :: String.t(), items :: [map()]) :: [
+          Tornium.OC.Graph.Node.t() | Tornium.OC.Graph.Edge.t()
+        ]
+  def decode_code(code, items) when is_binary(code) and is_list(items) do
     code
     |> String.split("\n")
     |> Enum.map(&String.trim_leading/1)
-    |> Enum.map(&parse_value/1)
+    |> Enum.map(fn value -> parse_value(value, items) end)
     |> Enum.reject(&is_nil/1)
   end
 
@@ -39,46 +41,46 @@ defmodule Tornium.OC.Graph do
   The value to be parsed can be metadata, CSS styling of nodes/edges, nodes, or edges. Any value other
   than a node or an edge will not be parsed and will be returned as `nil`.
   """
-  @spec parse_value(value :: String.t()) ::
+  @spec parse_value(value :: String.t(), items :: [map()]) ::
           Tornium.OC.Graph.Node.t() | Tornium.OC.Graph.Edge.t() | nil
-  def parse_value("%%" <> _value) do
+  def parse_value("%%" <> _value, _items) do
     # This is assumed to be a value that is a comment
     nil
   end
 
-  def parse_value("style " <> _value) do
+  def parse_value("style " <> _value, _items) do
     # This is some sort of CSS styling for each edge/node which we don't care about
     nil
   end
 
-  def parse_value("linkStyle " <> _value) do
+  def parse_value("linkStyle " <> _value, _items) do
     # This is some sort of CSS styling for each edge/node which we don't care about
     nil
   end
 
-  def parse_value("") do
+  def parse_value("", _items) do
     # Somehow there's sometimes empty strings from the split
     nil
   end
 
-  def parse_value("flowchart " <> _value) do
+  def parse_value("flowchart " <> _value, _items) do
     # Some sort of metadata on the direction of the graph
     nil
   end
 
-  def parse_value(value) when is_binary(value) do
+  def parse_value(value, items) when is_binary(value) and is_list(items) do
     # This should only be nodes or edges. If the string contains "-->", the string describes an
     # edge of the graph, otherwise it describes a node in the graph.
 
     if String.contains?(value, "-->") do
       parse_edge(value)
     else
-      parse_node(value)
+      parse_node(value, items)
     end
   end
 
-  @spec parse_node(value :: String.t()) :: Tornium.OC.Graph.Node.t()
-  defp parse_node(value) when is_binary(value) do
+  @spec parse_node(value :: String.t(), items :: [map()]) :: Tornium.OC.Graph.Node.t()
+  defp parse_node(value, items) when is_binary(value) and is_list(items) do
     split_value =
       value
       |> String.replace("\"", "")
@@ -87,7 +89,7 @@ defmodule Tornium.OC.Graph do
     if String.contains?(value, "([") or String.contains?(value, "[") do
       # Since the node contains "([" (text node) or "[" (post-decision node), it is a normal
       # textual node that has no impact on the graph
-      parse_textual_node(split_value)
+      parse_textual_node(split_value, items)
     else
       # If a node does not contain "([" or "[" it is a decision node
       parse_decision_node(split_value)
@@ -95,8 +97,7 @@ defmodule Tornium.OC.Graph do
   end
 
   @spec parse_decision_node(split_value :: [String.t()]) :: Tornium.OC.Graph.Node.t()
-  defp parse_decision_node([node_name, node_text, ""])
-       when is_binary(node_name) and is_binary(node_text) do
+  defp parse_decision_node([node_name, node_text, ""]) when is_binary(node_name) and is_binary(node_text) do
     %Tornium.OC.Graph.Node{
       name: node_name,
       edges: nil,
@@ -108,9 +109,9 @@ defmodule Tornium.OC.Graph do
     }
   end
 
-  @spec parse_textual_node(split_value :: [String.t()]) :: Tornium.OC.Graph.Node.t()
-  defp parse_textual_node([node_name, node_text, _remainder])
-       when is_binary(node_name) and is_binary(node_text) do
+  @spec parse_textual_node(split_value :: [String.t()], items :: [map()]) :: Tornium.OC.Graph.Node.t()
+  defp parse_textual_node([node_name, node_text, _remainder], items)
+       when is_binary(node_name) and is_binary(node_text) and is_list(items) do
     %Tornium.OC.Graph.Node{
       name: node_name,
       edges: nil,
@@ -118,13 +119,12 @@ defmodule Tornium.OC.Graph do
       decision?: false,
       terminal?: String.contains?(node_text, "Rewards: "),
       text: node_text,
-      reward: parse_reward(node_text)
+      reward: parse_reward(node_text, items)
     }
   end
 
-  # TODO: Determine how to handle items
-  @spec parse_reward(node_text :: String.t()) :: non_neg_integer() | term()
-  defp parse_reward(node_text) when is_binary(node_text) do
+  @spec parse_reward(node_text :: String.t(), items :: [map()]) :: non_neg_integer() | term()
+  defp parse_reward(node_text, items) when is_binary(node_text) and is_list(items) do
     reward_string =
       node_text
       |> String.split(["Rewards: ~", "Rewards: "])
@@ -150,12 +150,9 @@ defmodule Tornium.OC.Graph do
 
           ["Respect: " <> _, "Scope: " <> _, "Items: " <> item_string] ->
             item_string
-            |> String.split("Items: ")
-            |> Enum.at(1)
-
-            # TODO: Impelment this
-
-            nil
+            |> String.split(", ")
+            |> Enum.map(fn value -> item_value(value, items) end)
+            |> Enum.sum()
 
           ["Respect: " <> _, "Money: " <> money_string] ->
             money_string
@@ -173,11 +170,29 @@ defmodule Tornium.OC.Graph do
 
       item_quantity_string ->
         # eg {"_A6S_", TerminalNode(Xanax x30)
-        # TODO: Get sell value of the item
+        item_value(item_quantity_string, items)
+    end
+  end
 
-        [item_name, item_quantity] = String.split(item_quantity_string, " x")
+  @spec item_value(item_quantity_string :: String.t() | nil, items :: [map()]) :: non_neg_integer()
+  defp item_value(item_quantity_string, items)
+       when is_binary(item_quantity_string) and is_list(items) do
+    [item_name, item_quantity] = String.split(item_quantity_string, " x")
+    item_quantity = String.to_integer(item_quantity)
 
-        nil
+    item_data = Enum.find(items, fn %{"name" => n} -> n == item_name end)
+
+    case item_data do
+      %{"value" => %{"market_value" => market_value}}
+      when is_integer(market_value) and market_value > 0 ->
+        market_value * item_quantity
+
+      %{"value" => %{"sell_price" => sell_price}}
+      when is_integer(sell_price) and sell_price > 0 ->
+        sell_price * item_quantity
+
+      _ ->
+        0
     end
   end
 

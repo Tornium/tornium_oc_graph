@@ -5,7 +5,8 @@
 
 using namespace tornium::oc::graph;
 
-double tornium::oc::graph::compute_expected_value(const NodeMap &nodes, const std::string &node_name, const SuccessMap &success_map) {
+double tornium::oc::graph::compute_expected_value(const NodeMap &nodes, const std::string &node_name,
+                                                  const SuccessMap &success_map) {
     const auto &variant_node = nodes.at(node_name);
 
     if (std::holds_alternative<TerminalNode>(variant_node)) {

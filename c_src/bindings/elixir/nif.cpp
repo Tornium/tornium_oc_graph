@@ -5,8 +5,8 @@
 #include <optional>
 #include <string>
 
-#include "node.h"
 #include "generated/crime_index.h"
+#include "node.h"
 
 using namespace tornium::oc::graph;
 
@@ -19,7 +19,7 @@ std::variant<fine::Ok<double>, fine::Error<std::nullopt_t>> calculate_ev(
     }
 
     const double ev = tornium::oc::graph::compute_expected_value(graph_it->second, "START",
-                                                                SuccessMap{success_map.cbegin(), success_map.cend()});
+                                                                 SuccessMap{success_map.cbegin(), success_map.cend()});
 
     return fine::Ok<double>(ev);
 }

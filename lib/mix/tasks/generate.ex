@@ -41,6 +41,14 @@ defmodule Mix.Tasks.Tornium.Oc.Graph.Generate do
       |> generate_index()
 
     File.write!("c_src/src/generated/crime_index.h", rendered_index)
+
+    files =
+      Path.wildcard("c_src/bindings/**/*.cpp") ++
+        Path.wildcard("c_src/src/**/*.h") ++
+          Path.wildcard("c_src/src/**/*.cpp")
+
+    System.cmd("git", ["apply", "patch-generated-files.patch"])
+    System.cmd("clang-format", ["-i" | files])
   end
 
   defp generate_index(crime_names) when is_list(crime_names) do

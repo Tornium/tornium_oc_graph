@@ -68,6 +68,7 @@ defmodule Tornium.OC.Graph.Node do
     |> Regex.scan(node_text |> String.downcase())
     |> Enum.map(&hd/1)
     |> Enum.map(&map_position/1)
+    |> Enum.map(&fix_position/1)
   end
 
   @spec map_position(position :: String.t()) ::
@@ -83,5 +84,15 @@ defmodule Tornium.OC.Graph.Node do
       [[_, position_name]] ->
         {position_name, 1}
     end
+  end
+
+  @spec fix_position({position_name :: String.t(), position_index :: pos_integer()}) :: {position_name :: String.t(), position_index :: pos_integer()}
+  defp fix_position({"impersonator" = _position_name, position_index}) when is_integer(position_index) do
+    # This is a bug in the upstream data. Torn uses "imitator" here.
+    {"imitator", position_index}
+  end
+
+  defp fix_position({position_name, position_index}) when is_binary(position_name) and is_integer(position_index) do
+    {position_name, position_index}
   end
 end

@@ -60,7 +60,7 @@ index 9e8e0ac..18703c5 100644
  {"_A4S_", TerminalNode(6226000)},
  {"_A4_C1_", Node([](const SuccessMap &m){ return m.at("hustler_1"); }, "_A5_C1_", "_A4_C2_")},
 -{"_A4_C2_", Node([](const SuccessMap &m){ static_assert(false, "Missing data: This needs to be manually entered"); }, "_A5_C1_", "_A4_C3_")},
-+{"_A4_C2_", Node([](const SuccessMap &m){ return (m.at("muscle_1") + m.at("muscle_2") + m.at("hustler_1") + m.at("impersonator_1")) / 4; }, "_A5_C1_", "_A4_C3_")},
++{"_A4_C2_", Node([](const SuccessMap &m){ return (m.at("muscle_1") + m.at("muscle_2") + m.at("hustler_1") + m.at("imitator_1")) / 4; }, "_A5_C1_", "_A4_C3_")},
  {"_A4_C3_", Node([](const SuccessMap &m){ return m.at("hustler_1"); }, "_A4S_", "_A4F_")},
  {"_A5F_", TerminalNode(0)},
  {"_A5_C1_", Node([](const SuccessMap &m){ return m.at("hustler_1"); }, "_A6_C1_", "_A5_C2_")},

@@ -21,6 +21,7 @@ def _find_library() -> str:
     here = pathlib.Path(__file__).resolve().parent
     for candidate in (
         here / "libtornium_oc_graph_py.so",
+        here / "liblibtornium_oc_graph_py.so",
         here / ".." / ".."  / "priv" / "libtornium_oc_graph_py.so",
         here / ".." / ".." / "build" / "bindings" / "python" / "libtornium_oc_graph_py.so",
     ):

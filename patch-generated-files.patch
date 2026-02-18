@@ -50,7 +50,6 @@ index 639dd0e..e868205 100644
  {"_A7_C2_", Node([](const SuccessMap &m){ return m.at("bomber_1"); }, "_A8S2_", "_A7_C3_")},
  {"_A4_C2_", Node([](const SuccessMap &m){ return (m.at("lookout_1") + m.at("sniper_1"))/2; }, "_A5_C1_", "_A4_C3_")},
  {"_A8S2_", TerminalNode(0)},
--- 
 diff --git a/c_src/src/generated/snow_blind.h b/c_src/src/generated/snow_blind.h
 index 9e8e0ac..18703c5 100644
 --- a/c_src/src/generated/snow_blind.h
@@ -64,3 +63,34 @@ index 9e8e0ac..18703c5 100644
  {"_A4_C3_", Node([](const SuccessMap &m){ return m.at("hustler_1"); }, "_A4S_", "_A4F_")},
  {"_A5F_", TerminalNode(0)},
  {"_A5_C1_", Node([](const SuccessMap &m){ return m.at("hustler_1"); }, "_A6_C1_", "_A5_C2_")},
+diff --git a/c_src/src/generated/smoke_and_wing_mirrors.h b/c_src/src/generated/smoke_and_wing_mirrors.h
+--- a/c_src/src/generated/smoke_and_wing_mirrors.h
++++ b/c_src/src/generated/smoke_and_wing_mirrors.h
+@@ -11,3 +11,3 @@
+ {"START", Node([](const SuccessMap &m){ return m.at("imitator_1"); }, "_A2_C1_", "_A1_C2_")},
+-{"_A1_C2_", Node([](const SuccessMap &m){ return m.at("thief_1"); }, "_A2_C1_", "_A1_C3_")},
++{"_A1_C2_", Node([](const SuccessMap &m){ return m.at("car_thief_1"); }, "_A2_C1_", "_A1_C3_")},
+ {"_A1_C3_", Node([](const SuccessMap &m){ return m.at("imitator_1"); }, "_A2_C1_", "_A1F_")},
+@@ -16,7 +16,7 @@
+ {"_A2_C2_", Node([](const SuccessMap &m){ return m.at("imitator_1"); }, "_A3_C1_", "_A2_C3_")},
+-{"_A2_C3_", Node([](const SuccessMap &m){ return m.at("thief_1"); }, "_A3_C1_", "_A2F_")},
++{"_A2_C3_", Node([](const SuccessMap &m){ return m.at("thief_1"); }, "_A3_C1_", "_A2F_")},
+ {"_A3F_", TerminalNode(0)},
+-{"_A3_C1_", Node([](const SuccessMap &m){ return m.at("thief_1"); }, "_A4_C1_", "_A3_C2_")},
+-{"_A3_C2_", Node([](const SuccessMap &m){ return m.at("thief_1"); }, "_A4_C1_", "_A3F_")},
++{"_A3_C1_", Node([](const SuccessMap &m){ return m.at("car_thief_1"); }, "_A4_C1_", "_A3_C2_")},
++{"_A3_C2_", Node([](const SuccessMap &m){ return m.at("car_thief_1"); }, "_A4_C1_", "_A3F_")},
+ {"_A4F_", TerminalNode(0)},
+ {"_A4_C1_", Node([](const SuccessMap &m){ return (m.at("hustler_1") + m.at("hustler_2"))/2; }, "_A5_C1_", "_A4_C2_")},
+@@ -24,8 +24,8 @@
+ {"_A4_C3_", Node([](const SuccessMap &m){ return m.at("hustler_2"); }, "_B2_C1_", "_A4F_")},
+-{"_A5_C1_", Node([](const SuccessMap &m){ return m.at("thief_1"); }, "_A6_C1_", "_A5_C2_")},
++{"_A5_C1_", Node([](const SuccessMap &m){ return m.at("car_thief_1"); }, "_A6_C1_", "_A5_C2_")},
+ {"_A5_C2_", Node([](const SuccessMap &m){ return m.at("imitator_1"); }, "_B3_C1_", "_C1F_")},
+ {"_A6F_", TerminalNode(0)},
+ {"_A6_C1_", Node([](const SuccessMap &m){ return m.at("hustler_1"); }, "_A7S_", "_A6_C2_")},
+-{"_A6_C2_", Node([](const SuccessMap &m){ return m.at("thief_1"); }, "_A8S_", "_A6_C3_")},
+-{"_A6_C3_", Node([](const SuccessMap &m){ return m.at("thief_1"); }, "_A9S_", "_A6F_")},
++{"_A6_C2_", Node([](const SuccessMap &m){ return m.at("car_thief_1"); }, "_A8S_", "_A6_C3_")},
++{"_A6_C3_", Node([](const SuccessMap &m){ return m.at("car_thief_1"); }, "_A9S_", "_A6F_")},
+ {"_A7S_", TerminalNode(0)},

@@ -19,7 +19,6 @@ def _find_library() -> str:
         return env
 
     here = pathlib.Path(__file__).resolve().parent
-    print(here)
     for candidate in (
         here / "libtornium_oc_graph_py.so",
         here / ".." / ".."  / "priv" / "libtornium_oc_graph_py.so",

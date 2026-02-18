@@ -1,0 +1,37 @@
+[build-system]
+requires = ["scikit-build-core>=0.10"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "tornium-oc-graph"
+version = "0.1.0"
+description = "OC scenario graph for Torn"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.9"
+authors = [
+    { name = "tiksan" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: C++"
+]
+
+[project.urls]
+Homepage = "https://github.com/Tornium/tornium_oc_graph"
+Repository = "https://github.com/Tornium/tornium_oc_graph"
+Issues = "https://github.com/Tornium/tornium_oc_graph/issues"
+
+[tool.scikit-build]
+# Point scikit-build-core at the c_src/ directory where the root CMakeLists.txt lives
+cmake.source-dir = "c_src"
+
+# Only build the Python shared library, skip the Elixir NIF
+cmake.args = ["-DBUILD_ELIXIR_NIF=OFF", "-DBUILD_PYTHON=ON"]
+
+# The wheel only needs the compiled .so — scikit-build copies install() targets
+# into the wheel automatically
+wheel.packages = ["python_src/tornium_oc_graph"]
+
+# Build in Release mode for distribution
+cmake.build-type = "Release"

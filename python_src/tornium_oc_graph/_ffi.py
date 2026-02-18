@@ -28,7 +28,7 @@ def _find_library() -> str:
         if candidate.is_file():
             return str(candidate)
 
-    found = ctypes.util.find_library("libtornium_oc_graph_py")
+    found = ctypes.util.find_library("libtornium_oc_graph_py") or ctypes.util.find_library("liblibtornium_oc_graph_py")
     if found:
         return found
 

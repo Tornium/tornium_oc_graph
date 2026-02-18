@@ -14,7 +14,7 @@ inline const NodeMap smoke_and_wing_mirrors{
     {"_A2F_", TerminalNode(0)},
     {"_A2_C1_", Node([](const SuccessMap &m) { return m.at("imitator_1"); }, "_A3_C1_", "_A2_C2_")},
     {"_A2_C2_", Node([](const SuccessMap &m) { return m.at("imitator_1"); }, "_A3_C1_", "_A2_C3_")},
-    {"_A2_C3_", Node([](const SuccessMap &m) { return m.at("thief_1"); }, "_A3_C1_", "_A2F_")},
+    {"_A2_C3_", Node([](const SuccessMap &m) { return m.at("car_thief_1"); }, "_A3_C1_", "_A2F_")},
     {"_A3F_", TerminalNode(0)},
     {"_A3_C1_", Node([](const SuccessMap &m) { return m.at("car_thief_1"); }, "_A4_C1_", "_A3_C2_")},
     {"_A3_C2_", Node([](const SuccessMap &m) { return m.at("car_thief_1"); }, "_A4_C1_", "_A3F_")},

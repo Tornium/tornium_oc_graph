@@ -7,14 +7,15 @@ graphs for OC scenarios](https://www.torn.com/forums.php#/p=threads&f=67&t=16458
 ## Supported Languages
 - Elixir
 - C++
-- ~~Python~~ (coming soon)
+- Python
 
-Other languages that are not supported can be made to work by linking the shared object generated
-when compiling this library to your application (depending on how your language's FFI works).
+Other languages that are not directly supported by the library can be made to work by linking the
+shared object generated when compiling this library to your application (depending on how your
+language's FFI works).
 
-## Installation
-For installing for Elixir,the library can be installed through GitHub
-by adding `tornium_oc_graph` to your list of dependencies in `mix.exs`:
+## Installation: Elixir
+For installing for Elixir, the library can be installed through GitHub by adding `tornium_oc_graph`
+to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -24,7 +25,12 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/tornium_oc_graph>.
+Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc) and published on [HexDocs](https://hexdocs.pm).
 
+## Installation: Python
+For installing for Python, the library can be installed through GitHub by installing the library
+through git:
+
+```bash
+pip install git+https://github.com/Tornium/tornium_oc_graph.git
+```

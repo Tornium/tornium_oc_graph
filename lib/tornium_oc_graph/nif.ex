@@ -20,4 +20,9 @@ defmodule Tornium.OC.Graph.NIF do
   def calculate_ev(oc_name, success_map) when is_binary(oc_name) and is_map(success_map) do
     :erlang.nif_error("nif not loaded")
   end
+
+  @spec calculate_probability(oc_name :: String.t(), success_map :: %{String.t() => float()}) :: {:ok, float()} | {:error, term()}
+  def calculate_probability(oc_name, success_map) when is_binary(oc_name) and is_map(success_map) do
+    :erlang.nif_error("nif not loaded")
+  end
 end

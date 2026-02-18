@@ -66,6 +66,30 @@ def calculate_ev(oc_name: str, success_map: typing.Dict[str, float]):
     return out_ev.value
 
 
+def calculate_probability(oc_name: str, success_map: typing.Dict[str, float]):
+    count = len(success_map)
+    keys_arr = (ctypes.c_char_p * count)()
+    vals_arr = (ctypes.c_double * count)()
+
+    for i, (k, v) in enumerate(success_map.items()):
+        keys_arr[i] = k.encode("utf-8")
+        vals_arr[i] = v
+
+    out_probability = ctypes.c_double(0.0)
+    rc = _lib.tornium_calculate_probability(
+        oc_name.encode("utf-8"),
+        keys_arr,
+        vals_arr,
+        ctypes.c_int(count),
+        ctypes.byref(out_probability),
+    )
+
+    if not rc:
+        raise KeyError(f"Unknown OC scenario: {oc_name!r}")
+
+    return out_probability.value
+
+
 if __name__ == "__main__":
     ev = calculate_ev(
         "Honey Trap",
@@ -76,3 +100,13 @@ if __name__ == "__main__":
         },
     )
     print(f"EV for Honey Trap (all 0.5): {ev}")
+
+    probability = calculate_probability(
+        "Honey Trap",
+        {
+            "enforcer_1": 0.5,
+            "muscle_1": 0.5,
+            "muscle_2": 0.5,
+        },
+    )
+    print(f"probability for Honey Trap (all 0.5): {probability}")

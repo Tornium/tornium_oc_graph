@@ -23,6 +23,8 @@ typedef struct {
 typedef std::unordered_map<std::string, std::variant<Node, TerminalNode>> NodeMap;
 
 double compute_expected_value(const NodeMap &nodes, const std::string &node_name, const SuccessMap &success_map);
+
+double compute_success_probability(const NodeMap &nodes, const std::string &node_name, const SuccessMap &success_map);
 };  // namespace tornium::oc::graph
 
 #endif

@@ -25,4 +25,19 @@ std::variant<fine::Ok<double>, fine::Error<std::nullopt_t>> calculate_ev(
 }
 FINE_NIF(calculate_ev, 0);
 
+std::variant<fine::Ok<double>, fine::Error<std::nullopt_t>> calculate_probability(
+    ErlNifEnv* /* env */, const std::string oc_name, const std::map<std::string, double> success_map) {
+    auto graph_it = tornium::oc::graph::crime_index.find(oc_name);
+
+    if (graph_it == tornium::oc::graph::crime_index.cend()) {
+        return fine::Error<std::nullopt_t>(std::nullopt);
+    }
+
+    const double probability = tornium::oc::graph::compute_success_probability(
+        graph_it->second, "START", SuccessMap{success_map.cbegin(), success_map.cend()});
+
+    return fine::Ok<double>(probability);
+}
+FINE_NIF(calculate_probability, 0);
+
 FINE_INIT("Elixir.Tornium.OC.Graph.NIF");

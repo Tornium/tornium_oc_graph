@@ -97,7 +97,8 @@ defmodule Tornium.OC.Graph do
   end
 
   @spec parse_decision_node(split_value :: [String.t()]) :: Tornium.OC.Graph.Node.t()
-  defp parse_decision_node([node_name, node_text, ""]) when is_binary(node_name) and is_binary(node_text) do
+  defp parse_decision_node([node_name, node_text, ""])
+       when is_binary(node_name) and is_binary(node_text) do
     %Tornium.OC.Graph.Node{
       name: node_name,
       edges: nil,
@@ -109,7 +110,8 @@ defmodule Tornium.OC.Graph do
     }
   end
 
-  @spec parse_textual_node(split_value :: [String.t()], items :: [map()]) :: Tornium.OC.Graph.Node.t()
+  @spec parse_textual_node(split_value :: [String.t()], items :: [map()]) ::
+          Tornium.OC.Graph.Node.t()
   defp parse_textual_node([node_name, node_text, _remainder], items)
        when is_binary(node_name) and is_binary(node_text) and is_list(items) do
     %Tornium.OC.Graph.Node{
@@ -174,7 +176,8 @@ defmodule Tornium.OC.Graph do
     end
   end
 
-  @spec item_value(item_quantity_string :: String.t() | nil, items :: [map()]) :: non_neg_integer()
+  @spec item_value(item_quantity_string :: String.t() | nil, items :: [map()]) ::
+          non_neg_integer()
   defp item_value(item_quantity_string, items)
        when is_binary(item_quantity_string) and is_list(items) do
     [item_name, item_quantity] = String.split(item_quantity_string, " x")

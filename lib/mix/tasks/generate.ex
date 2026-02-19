@@ -45,7 +45,7 @@ defmodule Mix.Tasks.Tornium.Oc.Graph.Generate do
     files =
       Path.wildcard("c_src/bindings/**/*.cpp") ++
         Path.wildcard("c_src/src/**/*.h") ++
-          Path.wildcard("c_src/src/**/*.cpp")
+        Path.wildcard("c_src/src/**/*.cpp")
 
     System.cmd("git", ["apply", "patch-generated-files.patch"])
     System.cmd("clang-format", ["-i" | files])

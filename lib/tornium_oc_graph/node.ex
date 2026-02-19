@@ -86,13 +86,19 @@ defmodule Tornium.OC.Graph.Node do
     end
   end
 
-  @spec fix_position({position_name :: String.t(), position_index :: pos_integer()}) :: {position_name :: String.t(), position_index :: pos_integer()}
-  defp fix_position({"impersonator" = _position_name, position_index}) when is_integer(position_index) do
+  @spec fix_position({position_name :: String.t(), position_index :: pos_integer()}) ::
+          {position_name :: String.t(), position_index :: pos_integer()}
+  defp fix_position({"impersonator" = _position_name, position_index})
+       when is_integer(position_index) do
     # This is a bug in the upstream data. Torn uses "imitator" here.
     {"imitator", position_index}
   end
 
-  defp fix_position({position_name, position_index}) when is_binary(position_name) and is_integer(position_index) do
-    {position_name, position_index}
+  defp fix_position({position_name, position_index})
+       when is_binary(position_name) and is_integer(position_index) do
+    {
+      position_name |> String.split(" ") |> Enum.join("_"),
+      position_index
+    }
   end
 end

@@ -8,12 +8,12 @@ using namespace tornium::oc::graph;
 namespace tornium::oc::graph {
 inline const NodeMap stacking_the_deck{
     {"_A1F_", TerminalNode(0)},
-    {"START", Node([](const SuccessMap &m) { return m.at("cat burglar_1"); }, "_A2_C1_", "_A1_C2_")},
+    {"START", Node([](const SuccessMap &m) { return m.at("cat_burglar_1"); }, "_A2_C1_", "_A1_C2_")},
     {"_A1_C2_",
-     Node([](const SuccessMap &m) { return (m.at("cat burglar_1") + m.at("imitator_1")) / 2; }, "_A2_C1_", "_A1F_")},
+     Node([](const SuccessMap &m) { return (m.at("cat_burglar_1") + m.at("imitator_1")) / 2; }, "_A2_C1_", "_A1F_")},
     {"_A2_C1_", Node([](const SuccessMap &m) { return m.at("driver_1"); }, "_A3_C1_", "_A2_C2_")},
     {"_A2_C2_", Node([](const SuccessMap &m) { return m.at("driver_1"); }, "_A3_C1_", "_B1_C1_")},
-    {"_A3_C1_", Node([](const SuccessMap &m) { return m.at("cat burglar_1"); }, "_A4_C1_", "_B1_C1_")},
+    {"_A3_C1_", Node([](const SuccessMap &m) { return m.at("cat_burglar_1"); }, "_A4_C1_", "_B1_C1_")},
     {"_A4_C1_", Node([](const SuccessMap &m) { return m.at("hacker_1"); }, "_A5_C1_", "_B2_C1_")},
     {"_A5F_", TerminalNode(0)},
     {"_A5_C1_", Node([](const SuccessMap &m) { return m.at("hacker_1"); }, "_A6_C1_", "_A5_C2_")},

@@ -2,9 +2,9 @@
 OC scenario graphs as generated C++ code.
 
 > [!IMPORTANT]
-> This library was by reversing Allenone's public OC graphs, generating C++ code from those graphs, and
-> patching those generated files to resolve issues in Allenone's graphs. Therefore, there may be certain
-> issues that were not caught or outdated data in the generated files.
+> This library was implemented by reversing Allenone's public OC graphs, generating C++ code from those
+> graphs, and patching those generated files to resolve issues in Allenone's graphs. Therefore, there may be
+> certain issues that were not caught or outdated data in the generated files.
 
 If you need help using this library or encounter any bugs, please create a ticket on [Tornium's Discord server](https://discord.gg/pPcqTRTRyF).
 

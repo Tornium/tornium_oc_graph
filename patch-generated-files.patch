@@ -94,3 +94,36 @@ diff --git a/c_src/src/generated/smoke_and_wing_mirrors.h b/c_src/src/generated/
 +{"_A6_C2_", Node([](const SuccessMap &m){ return m.at("car_thief_1"); }, "_A8S_", "_A6_C3_")},
 +{"_A6_C3_", Node([](const SuccessMap &m){ return m.at("car_thief_1"); }, "_A9S_", "_A6F_")},
  {"_A7S_", TerminalNode(0)},
+diff --git a/c_src/src/generated/no_reserve.h b/c_src/src/generated/no_reserve.h
+--- a/c_src/src/generated/no_reserve.h
++++ b/c_src/src/generated/no_reserve.h
+@@ -12,6 +12,6 @@
+ {"_A1_C2_", Node([](const SuccessMap &m){ return (m.at("techie_1") + m.at("engineer_1"))/2; }, "_A2_C1_", "_A1_C3_")},
+-{"_A1_C3_", Node([](const SuccessMap &m){ return (m.at("thief_1") + m.at("techie_1"))/2; }, "_A2_C1_", "_A1F_")},
++{"_A1_C3_", Node([](const SuccessMap &m){ return (m.at("car_thief_1") + m.at("techie_1"))/2; }, "_A2_C1_", "_A1F_")},
+ {"_A2F_", TerminalNode(0)},
+ {"_A2_C1_", Node([](const SuccessMap &m){ return m.at("techie_1"); }, "_A3_C1_", "_A2_C2_")},
+-{"_A2_C2_", Node([](const SuccessMap &m){ return (m.at("techie_1") + m.at("thief_1"))/2; }, "_A3_C1_", "_A2_C3_")},
++{"_A2_C2_", Node([](const SuccessMap &m){ return (m.at("techie_1") + m.at("car_thief_1"))/2; }, "_A3_C1_", "_A2_C3_")},
+ {"_A2_C3_", Node([](const SuccessMap &m){ return m.at("engineer_1"); }, "_A3_C1_", "_A2F_")},
+@@ -20,4 +20,4 @@
+ {"_A3_C2_", Node([](const SuccessMap &m){ return m.at("engineer_1"); }, "_A4_C1_", "_A3_C3_")},
+-{"_A3_C3_", Node([](const SuccessMap &m){ return m.at("thief_1"); }, "_B4_C1_", "_A3F_")},
+-{"_A4_C1_", Node([](const SuccessMap &m){ return m.at("thief_1"); }, "_A5_C1_", "_B4_C1_")},
++{"_A3_C3_", Node([](const SuccessMap &m){ return m.at("car_thief_1"); }, "_B4_C1_", "_A3F_")},
++{"_A4_C1_", Node([](const SuccessMap &m){ return m.at("car_thief_1"); }, "_A5_C1_", "_B4_C1_")},
+ {"_A5_C1_", Node([](const SuccessMap &m){ return m.at("engineer_1"); }, "_A6_C1_", "_B5_C1_")},
+@@ -28,6 +28,6 @@
+ {"_B5F_", TerminalNode(0)},
+-{"_B5_C1_", Node([](const SuccessMap &m){ return m.at("thief_1"); }, "_B8_C1_", "_B5_C2_")},
++{"_B5_C1_", Node([](const SuccessMap &m){ return m.at("car_thief_1"); }, "_B8_C1_", "_B5_C2_")},
+ {"_B5_C2_", Node([](const SuccessMap &m){ return m.at("techie_1"); }, "_B6_C1_", "_B5F_")},
+ {"_B6F_", TerminalNode(0)},
+-{"_B6_C1_", Node([](const SuccessMap &m){ return (m.at("engineer_1") + m.at("thief_1"))/2; }, "_B7S_", "_B6_C2_")},
++{"_B6_C1_", Node([](const SuccessMap &m){ return (m.at("engineer_1") + m.at("car_thief_1"))/2; }, "_B7S_", "_B6_C2_")},
+ {"_B6_C2_", Node([](const SuccessMap &m){ return m.at("techie_1"); }, "_B7S_", "_B6F_")},
+@@ -37,3 +37,3 @@
+ {"_B8_C1_", Node([](const SuccessMap &m){ return m.at("techie_1"); }, "_B9S_", "_B8_C2_")},
+-{"_B8_C2_", Node([](const SuccessMap &m){ return (m.at("thief_1") + m.at("engineer_1"))/2; }, "_B8S_", "_B8F_")},
++{"_B8_C2_", Node([](const SuccessMap &m){ return (m.at("car_thief_1") + m.at("engineer_1"))/2; }, "_B8S_", "_B8F_")},
+ {"_B9S_", TerminalNode(0)}

@@ -22,6 +22,23 @@ defmodule Tornium.OC.Graph do
   end
 
   @doc """
+  Calculate the expected probability of the OC by the map of CPRs for each position.
+  """
+  @spec calculate_probability(oc_name :: String.t(), success_map :: %{String.t() => 0..100}) :: {:ok, float()} | {:error, term()}
+  def calculate_probability(oc_name, success_map) when is_binary(oc_name) and is_map(success_map) do
+    success_map =
+      success_map
+      |> Enum.map(fn {k, v} when is_integer(v) -> {k, v / 100} end)
+      |> Map.new()
+
+    try do
+      Tornium.OC.Graph.NIF.calculate_probability(oc_name, success_map)
+    rescue
+      _ -> {:error, nil}
+    end
+  end
+
+  @doc """
   Decode the mermaid code into a list of elements.
   """
   @spec decode_code(code :: String.t(), items :: [map()]) :: [

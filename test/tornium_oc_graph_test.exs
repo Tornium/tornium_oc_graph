@@ -41,7 +41,7 @@ defmodule Tornium.Test.OC.Graph do
     "Manifest Cruelty" => ["cat_burglar_1", "reviver_1", "hacker_1", "interrogator_1"],
     "Market Forces" => ["lookout_1", "enforcer_1", "negotiator_1", "muscle_1", "arsonist_1"],
     "Mob Mentality" => ["looter_1", "looter_2", "looter_3", "looter_4"],
-    "No Reserve" => ["techie_1", "engineer_1", "thief_1"],
+    "No Reserve" => ["techie_1", "engineer_1", "car_thief_1"],
     "Pet Project" => ["picklock_1", "muscle_1", "kidnapper_1"],
     "Smoke and Wing Mirrors" => ["imitator_1", "car_thief_1", "hustler_1", "hustler_2"],
     "Sneaky Git Grab" => ["imitator_1", "pickpocket_1", "techie_1", "hacker_1"],

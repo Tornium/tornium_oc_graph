@@ -1,9 +1,23 @@
 #include "node.h"
 
+#include <iostream>
+#include <ostream>
 #include <string>
 #include <variant>
 
 using namespace tornium::oc::graph;
+
+float tornium::oc::graph::sm_position(const SuccessMap &success_map, const std::string &position) {
+    auto it = success_map.find(position);
+
+    if (it == success_map.end()) {
+        std::cerr << "[tornium_oc_graph] Key '" << position << "' not found in the success map (size "
+                  << success_map.size() << ")" << std::endl;
+        return 0.0f;
+    }
+
+    return it->second;
+}
 
 double tornium::oc::graph::compute_expected_value(const NodeMap &nodes, const std::string &node_name,
                                                   const SuccessMap &success_map) {

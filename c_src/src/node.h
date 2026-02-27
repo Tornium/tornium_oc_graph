@@ -10,6 +10,8 @@
 namespace tornium::oc::graph {
 typedef std::unordered_map<std::string, float> SuccessMap;
 
+float sm_position(const SuccessMap &success_map, const std::string &position);
+
 typedef struct {
     std::function<float(const SuccessMap &)> probability;
     std::string success;

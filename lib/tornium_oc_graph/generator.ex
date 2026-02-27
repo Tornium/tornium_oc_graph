@@ -78,13 +78,13 @@ defmodule Tornium.OC.Graph.Generator do
   @spec render_success_calculation(positions :: [{String.t(), pos_integer()}]) :: String.t()
   defp render_success_calculation([{position_name, position_index}] = _positions)
        when is_binary(position_name) and is_integer(position_index) do
-    "return m.at(\"#{position_name}_#{position_index}\");"
+    "return sm_position(m, \"#{position_name}_#{position_index}\");"
   end
 
   defp render_success_calculation(positions) when is_list(positions) and positions != [] do
     inner =
       positions
-      |> Enum.map(fn {n, i} -> "m.at(\"#{n}_#{i}\")" end)
+      |> Enum.map(fn {n, i} -> "sm_position(m, \"#{n}_#{i}\")" end)
       |> Enum.join(" + ")
 
     ~e"return (<%= inner %>)/<%= length(positions) %>;"

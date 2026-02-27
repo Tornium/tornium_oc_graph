@@ -20,4 +20,4 @@ Usage::
 from tornium_oc_graph._ffi import calculate_ev, calculate_probability
 
 __all__ = ["calculate_ev", "calculate_probability"]
-__version__ = "0.1.0"
+__version__ = "0.1.1-dev"

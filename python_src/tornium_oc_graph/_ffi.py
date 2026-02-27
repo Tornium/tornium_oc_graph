@@ -24,6 +24,8 @@ def _find_library() -> str:
         here / "liblibtornium_oc_graph_py.so",
         here / ".." / ".."  / "priv" / "libtornium_oc_graph_py.so",
         here / ".." / ".." / "build" / "bindings" / "python" / "libtornium_oc_graph_py.so",
+        here / ".." / ".." / "_build" / "prod" / "lib" / "tornium_oc_graph" / "priv" / "libtornium_oc_graph_py.so",
+        here / ".." / ".." / "_build" / "dev" / "lib" / "tornium_oc_graph" / "priv" / "libtornium_oc_graph_py.so",
     ):
         if candidate.is_file():
             return str(candidate)

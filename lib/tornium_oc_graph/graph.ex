@@ -24,8 +24,10 @@ defmodule Tornium.OC.Graph do
   @doc """
   Calculate the expected probability of the OC by the map of CPRs for each position.
   """
-  @spec calculate_probability(oc_name :: String.t(), success_map :: %{String.t() => 0..100}) :: {:ok, float()} | {:error, term()}
-  def calculate_probability(oc_name, success_map) when is_binary(oc_name) and is_map(success_map) do
+  @spec calculate_probability(oc_name :: String.t(), success_map :: %{String.t() => 0..100}) ::
+          {:ok, float()} | {:error, term()}
+  def calculate_probability(oc_name, success_map)
+      when is_binary(oc_name) and is_map(success_map) do
     success_map =
       success_map
       |> Enum.map(fn {k, v} when is_integer(v) -> {k, v / 100} end)
@@ -187,6 +189,9 @@ defmodule Tornium.OC.Graph do
             |> String.to_integer()
         end
 
+      "Items: " <> item_quantity_string ->
+        item_value(item_quantity_string, items)
+
       item_quantity_string ->
         # eg {"_A6S_", TerminalNode(Xanax x30)
         item_value(item_quantity_string, items)
@@ -202,17 +207,19 @@ defmodule Tornium.OC.Graph do
 
     item_data = Enum.find(items, fn %{"name" => n} -> n == item_name end)
 
-    case item_data do
-      %{"value" => %{"market_value" => market_value}}
+    case {item_data, item_name} do
+      {%{"value" => %{"market_price" => market_value}}, _}
       when is_integer(market_value) and market_value > 0 ->
         market_value * item_quantity
 
-      %{"value" => %{"sell_price" => sell_price}}
+      {%{"value" => %{"sell_price" => sell_price}}, _}
       when is_integer(sell_price) and sell_price > 0 ->
         sell_price * item_quantity
 
-      _ ->
-        0
+      {_, "A Class Vehicle"} ->
+        # Average sell value of all obtainable class A cars
+        # Calculated from (125000+40000+812500+1075000+1187500+875000+150000+937500+87500)/9
+        587_778 * item_quantity
     end
   end
 

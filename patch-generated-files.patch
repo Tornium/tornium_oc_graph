@@ -49,7 +49,7 @@ index 639dd0e..e868205 100644
 +{"_B7_C1_", Node([](const SuccessMap &m){ return (sm_position(m, "muscle_1") + sm_position(m, "muscle_2") + sm_position(m, "engineer_1") + sm_position(m, "bomber_1") + sm_position(m, "lookout_1") + sm_position(m, "sniper_1")) / 6; }, "_B7S_", "_B7_C2_")},
  {"_A7_C2_", Node([](const SuccessMap &m){ return sm_position(m, "bomber_1"); }, "_A8S2_", "_A7_C3_")},
  {"_A4_C2_", Node([](const SuccessMap &m){ return (sm_position(m, "lookout_1") + sm_position(m, "sniper_1"))/2; }, "_A5_C1_", "_A4_C3_")},
- {"_A8S2_", TerminalNode(0)},
+ {"_A8S2_", TerminalNode(840000000)},
 diff --git a/c_src/src/generated/snow_blind.h b/c_src/src/generated/snow_blind.h
 index 9e8e0ac..18703c5 100644
 --- a/c_src/src/generated/snow_blind.h
@@ -93,7 +93,7 @@ diff --git a/c_src/src/generated/smoke_and_wing_mirrors.h b/c_src/src/generated/
 -{"_A6_C3_", Node([](const SuccessMap &m){ return sm_position(m, "thief_1"); }, "_A9S_", "_A6F_")},
 +{"_A6_C2_", Node([](const SuccessMap &m){ return sm_position(m, "car_thief_1"); }, "_A8S_", "_A6_C3_")},
 +{"_A6_C3_", Node([](const SuccessMap &m){ return sm_position(m, "car_thief_1"); }, "_A9S_", "_A6F_")},
- {"_A7S_", TerminalNode(0)},
+ {"_A7S_", TerminalNode(587778)},
 diff --git a/c_src/src/generated/no_reserve.h b/c_src/src/generated/no_reserve.h
 --- a/c_src/src/generated/no_reserve.h
 +++ b/c_src/src/generated/no_reserve.h

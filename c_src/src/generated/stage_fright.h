@@ -24,18 +24,18 @@ inline const NodeMap stage_fright{
     {"_A4_C1_", Node([](const SuccessMap &m) { return sm_position(m, "enforcer_1"); }, "_A5_C1_", "_B2_C1_")},
     {"_A5_C1_", Node([](const SuccessMap &m) { return (sm_position(m, "lookout_1") + sm_position(m, "sniper_1")) / 2; },
                      "_A6S_", "_A7S_")},
-    {"_A6S_", TerminalNode(0)},
-    {"_A7S_", TerminalNode(0)},
+    {"_A6S_", TerminalNode(24652710)},
+    {"_A7S_", TerminalNode(20543925)},
     {"_B1F_", TerminalNode(0)},
     {"_B1_C1_", Node([](const SuccessMap &m) { return sm_position(m, "enforcer_1"); }, "_B2_C1_", "_B1_C2_")},
     {"_B1_C2_", Node([](const SuccessMap &m) { return sm_position(m, "sniper_1"); }, "_B2_C1_", "_B1F_")},
     {"_B2F_", TerminalNode(0)},
-    {"_B2S_", TerminalNode(0)},
+    {"_B2S_", TerminalNode(12326355)},
     {"_B2_C1_", Node([](const SuccessMap &m) { return sm_position(m, "muscle_1"); }, "_B3_C1_", "_B2_C2_")},
     {"_B2_C2_", Node([](const SuccessMap &m) { return (sm_position(m, "sniper_1") + sm_position(m, "driver_1")) / 2; },
                      "_B2S_", "_B2F_")},
     {"_B3F_", TerminalNode(0)},
     {"_B3_C1_", Node([](const SuccessMap &m) { return sm_position(m, "sniper_1"); }, "_B4S_", "_B3F_")},
-    {"_B4S_", TerminalNode(0)}};
+    {"_B4S_", TerminalNode(15613383)}};
 };  // namespace tornium::oc::graph
 #endif

@@ -20,11 +20,11 @@ inline const NodeMap counter_offer{
     {"_A2_C2_", Node([](const SuccessMap &m) { return sm_position(m, "robber_1"); }, "_A3_C1_", "_A2F_")},
     {"_A3_C1_", Node([](const SuccessMap &m) { return sm_position(m, "hacker_1"); }, "_A4_C1_", "_A3_C2_")},
     {"_A3_C2_", Node([](const SuccessMap &m) { return sm_position(m, "hacker_1"); }, "_A4_C1_", "_B3_C1_")},
-    {"_A4F_", TerminalNode(0)},
+    {"_A4F_", TerminalNode(9653955)},
     {"_A4_C1_", Node([](const SuccessMap &m) { return sm_position(m, "hacker_1"); }, "_A5_C1_", "_A4_C2_")},
     {"_A4_C2_", Node([](const SuccessMap &m) { return sm_position(m, "engineer_1"); }, "_A5_C1_", "_A4F_")},
-    {"_A5F_", TerminalNode(0)},
-    {"_A5S_", TerminalNode(15290000)},
+    {"_A5F_", TerminalNode(9653955)},
+    {"_A5S_", TerminalNode(19782816)},
     {"_A5_C1_",
      Node([](const SuccessMap &m) { return (sm_position(m, "picklock_1") + sm_position(m, "robber_1")) / 2; },
           "_A6_C1_", "_A5_C2_")},
@@ -34,8 +34,8 @@ inline const NodeMap counter_offer{
     {"_A6_C1_",
      Node([](const SuccessMap &m) { return (sm_position(m, "looter_1") + sm_position(m, "engineer_1")) / 2; }, "_A7S_",
           "_A7S2_")},
-    {"_A7S2_", TerminalNode(12750000)},
-    {"_A7S_", TerminalNode(25290000)},
+    {"_A7S2_", TerminalNode(13891454)},
+    {"_A7S_", TerminalNode(30705037)},
     {"_B3F_", TerminalNode(0)},
     {"_B3_C1_", Node([](const SuccessMap &m) { return sm_position(m, "looter_1"); }, "_B4_C1_", "_B3_C2_")},
     {"_B3_C2_",
@@ -46,6 +46,6 @@ inline const NodeMap counter_offer{
     {"_B4_C2_",
      Node([](const SuccessMap &m) { return (sm_position(m, "engineer_1") + sm_position(m, "picklock_1")) / 2; },
           "_B5S_", "_B4F_")},
-    {"_B5S_", TerminalNode(12000000)}};
+    {"_B5S_", TerminalNode(12391079)}};
 };  // namespace tornium::oc::graph
 #endif

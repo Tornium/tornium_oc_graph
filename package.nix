@@ -1,13 +1,13 @@
-{ lib, python3Packages, pkgs, self, ...}:
+{ lib, python3Packages, pkgs, src, ...}:
 
 python3Packages.buildPythonPackage {
   pname = "tornium_oc_graph";
   version = "0.1.2-dev";
   pyproject = true;
 
-  src = self;
+  src = builtins.path{ path = src; };
 
-  buildInputs =  [ python3Packages.scikit-build-core ];
+  buildInputs = [ python3Packages.scikit-build-core ];
   nativeBuildInputs = [
     python3Packages.scikit-build-core
     pkgs.cmake

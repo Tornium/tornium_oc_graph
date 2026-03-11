@@ -34,4 +34,4 @@ cmake.args = ["-DBUILD_ELIXIR_NIF=OFF", "-DBUILD_PYTHON=ON"]
 wheel.packages = ["python_src/tornium_oc_graph"]
 
 # Build in Release mode for distribution
-cmake.build-type = "Release"
+cmake.build-type = "Debug"

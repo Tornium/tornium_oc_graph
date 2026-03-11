@@ -20,7 +20,7 @@ python3Packages.buildPythonPackage {
     echo $(pwd)
     ls -R .
   '';
-  cmakeDir = "../c_src/build";
+  cmakeDir = "../c_src";
 
   propagatedBuildInputs = [];
   pythonImportCheck = [ "tornium_oc_graph" ];

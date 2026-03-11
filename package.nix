@@ -16,6 +16,7 @@ python3Packages.buildPythonPackage {
 
   build-system = with python3Packages; [ scikit-build-core ];
   preConfigure = ''
+    mkdir c_src/build/
     ls -R .
   '';
 

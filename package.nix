@@ -17,6 +17,9 @@ python3Packages.buildPythonPackage {
   ];
 
   build-system = with python3Packages; [ scikit-build-core ];
+  env.SCIKIT_BUILD_CORE_CMAKE_SOURCE_DIR = "c_src";
+  env.SCIKIT_BUILD_CORE_CMAKE_ARGS = "-DBUILD_ELIXIR_NIF=OFF -DBUILD_PYTHON=ON";
+
   propagatedBuildInputs = [];
   pythonImportCheck = [ "tornium_oc_graph" ];
 

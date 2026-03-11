@@ -22,7 +22,12 @@
         });
 
       overlays.default = final: prev: {
-        tornium_oc_graph = final.callPackage ./package.nix { };
+        python3Packages = prev.python3Packages.overrideScope (pyFinal: pyPrev: {
+          tornium_oc_graph = pyFinal.callPackage ./package.nix {
+            # often you want the package to build from this flake's source:
+            src = self;
+          };
+        });
       };
 
       devShells = forAllSystems (system:

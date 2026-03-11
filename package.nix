@@ -15,7 +15,9 @@ python3Packages.buildPythonPackage {
   ];
 
   build-system = with python3Packages; [ scikit-build-core ];
-  cmakeDir = "c_src";
+  preConfigure = ''
+    ls -R .
+  '';
 
   propagatedBuildInputs = [];
   pythonImportCheck = [ "tornium_oc_graph" ];

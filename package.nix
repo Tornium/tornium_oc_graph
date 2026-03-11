@@ -19,6 +19,7 @@ python3Packages.buildPythonPackage {
     mkdir c_src/build/
     ls -R .
   '';
+  cmakeDir = "c_src";
 
   propagatedBuildInputs = [];
   pythonImportCheck = [ "tornium_oc_graph" ];

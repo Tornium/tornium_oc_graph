@@ -23,8 +23,7 @@
 
       overlays.default = final: prev: {
         python313Packages = prev.python313Packages.overrideScope (pyFinal: pyPrev: {
-          tornium_oc_graph = pyPrev.callPackage ./package.nix {
-            # often you want the package to build from this flake's source:
+          tornium_oc_graph = final.callPackage ./package.nix {
             src = self;
           };
         });

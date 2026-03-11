@@ -4,7 +4,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "tornium-oc-graph"
-version = "0.1.1"
+version = "0.1.2-dev"
 description = "OC scenario graph for Torn"
 readme = "README.md"
 license = "Apache-2.0"

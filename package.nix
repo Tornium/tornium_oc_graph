@@ -5,7 +5,7 @@ python3Packages.buildPythonPackage {
   version = "0.1.2-dev";
   pyproject = true;
 
-  src = ./c_src;
+  src = ./.;
 
   buildInputs =  [ python3Packages.scikit-build-core ];
   nativeBuildInputs = [
@@ -15,7 +15,7 @@ python3Packages.buildPythonPackage {
   ];
 
   build-system = with python3Packages; [ scikit-build-core ];
-  CMAKE_ARGS = "-S ../c_src -DBUILD_ELIXIR_NIF=OFF -DBUILD_PYTHON=ON";
+  CMAKE_ARGS = "-S ./c_src -DBUILD_ELIXIR_NIF=OFF -DBUILD_PYTHON=ON";
 
   propagatedBuildInputs = [];
   pythonImportCheck = [ "tornium_oc_graph" ];

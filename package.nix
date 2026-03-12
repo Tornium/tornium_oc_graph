@@ -6,7 +6,6 @@ python3Packages.buildPythonPackage {
   pyproject = true;
 
   src = builtins.path{ path = src; };
-  format = "wheel";
 
   buildInputs = [ python3Packages.scikit-build-core ];
   nativeBuildInputs = [

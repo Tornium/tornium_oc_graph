@@ -6,6 +6,7 @@ python3Packages.buildPythonPackage {
   pyproject = true;
 
   src = builtins.path{ path = src; };
+  format = "wheel";
 
   buildInputs = [ python3Packages.scikit-build-core ];
   nativeBuildInputs = [
@@ -19,13 +20,6 @@ python3Packages.buildPythonPackage {
   dontUseCmakeConfigure = true;
   dontUseCmakeBuild = true;
   dontUseCmakeInstall = true;
-
-  # preConfigure = ''
-  #   mkdir c_src/build/
-  #   echo $(pwd)
-  #   ls -R .
-  # '';
-  # cmakeDir = "../c_src";
 
   propagatedBuildInputs = [];
   pythonImportCheck = [ "tornium_oc_graph" ];

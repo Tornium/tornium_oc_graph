@@ -1,8 +1,9 @@
 #include "abi.h"
-#include "generated/crime_index.h"
-#include "node.h"
 
 #include <string>
+
+#include "generated/crime_index.h"
+#include "node.h"
 
 extern "C" bool tornium_calculate_ev(const char *oc_name, const char **keys, const double *values, int count,
                                      double *out_ev) {

@@ -1,18 +1,20 @@
 #define PY_SSIZE_T_CLEAN
 
 #include <Python.h>
+
 #include <vector>
+
 #include "abi.h"
 
 // Helper function to extract Python lists and call the target C function
-static PyObject* invoke_tornium_func(PyObject* args, 
+static PyObject* invoke_tornium_func(PyObject* args,
                                      bool (*func)(const char*, const char**, const double*, int, double*)) {
     const char* oc_name;
     PyObject *keys_obj, *values_obj;
 
     // "sOO" expects: a string, and two generic Python Objects (our lists/tuples)
     if (!PyArg_ParseTuple(args, "sOO", &oc_name, &keys_obj, &values_obj)) {
-        return NULL; // PyArg_ParseTuple raises the appropriate TypeError automatically
+        return NULL;  // PyArg_ParseTuple raises the appropriate TypeError automatically
     }
 
     // PySequence_Fast safely converts lists/tuples into a flat array of borrowed references
@@ -95,15 +97,9 @@ static PyMethodDef TorniumMethods[] = {
     {NULL, NULL, 0, NULL} /* Sentinel */
 };
 
-static struct PyModuleDef tornium_module = {
-    PyModuleDef_HEAD_INIT,
-    "_libtornium_oc_graph_py",  // Name of the module
-    "Python C API interface for Tornium ABI",
-    -1,
-    TorniumMethods
-};
+static struct PyModuleDef tornium_module = {PyModuleDef_HEAD_INIT,
+                                            "_libtornium_oc_graph_py",  // Name of the module
+                                            "Python C API interface for Tornium ABI", -1, TorniumMethods};
 
 // Module Initialization entry point (Must match module name: PyInit_<module_name>)
-PyMODINIT_FUNC PyInit__libtornium_oc_graph_py(void) {
-    return PyModule_Create(&tornium_module);
-}
+PyMODINIT_FUNC PyInit__libtornium_oc_graph_py(void) { return PyModule_Create(&tornium_module); }

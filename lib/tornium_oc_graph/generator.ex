@@ -42,7 +42,7 @@ defmodule Tornium.OC.Graph.Generator do
   def render_node(%Tornium.OC.Graph.Node{start?: true} = node) do
     {success_node, failure_node} = Tornium.OC.Graph.Node.get_next(node)
 
-    ~e"{\"START\", Node([](const SuccessMap &m){ <%= node |> Tornium.OC.Graph.Node.get_positions() |> render_success_calculation() %> }, \"<%= success_node %>\", \"<%= failure_node %>\")}"
+    ~e"{\"START\", Node{[](const SuccessMap &m){ <%= node |> Tornium.OC.Graph.Node.get_positions() |> render_success_calculation() %> }, \"<%= success_node %>\", \"<%= failure_node %>\"}}"
   end
 
   def render_node(%Tornium.OC.Graph.Node{
@@ -52,7 +52,7 @@ defmodule Tornium.OC.Graph.Generator do
         reward: reward
       })
       when is_nil(reward) do
-    ~e"{\"<%= node_name %>\", TerminalNode(0)}"
+    ~e"{\"<%= node_name %>\", TerminalNode{0}}"
   end
 
   def render_node(%Tornium.OC.Graph.Node{
@@ -61,13 +61,13 @@ defmodule Tornium.OC.Graph.Generator do
         terminal?: true,
         reward: reward
       }) do
-    ~e"{\"<%= node_name %>\", TerminalNode(<%= reward %>)}"
+    ~e"{\"<%= node_name %>\", TerminalNode{<%= reward %>}}"
   end
 
   def render_node(%Tornium.OC.Graph.Node{name: node_name, decision?: true} = node) do
     {success_node, failure_node} = Tornium.OC.Graph.Node.get_next(node)
 
-    ~e"{\"<%= node_name %>\", Node([](const SuccessMap &m){ <%= node |> Tornium.OC.Graph.Node.get_positions() |> render_success_calculation() %> }, \"<%= success_node %>\", \"<%= failure_node %>\")}"
+    ~e"{\"<%= node_name %>\", Node{[](const SuccessMap &m){ <%= node |> Tornium.OC.Graph.Node.get_positions() |> render_success_calculation() %> }, \"<%= success_node %>\", \"<%= failure_node %>\"}}"
   end
 
   # This is a temporary resolution for invalid nodes with outgoing edges that merge before a decision node but are considered a decision node.

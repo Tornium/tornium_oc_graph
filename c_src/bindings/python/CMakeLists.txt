@@ -3,7 +3,10 @@ python_add_library(_libtornium_oc_graph_py MODULE ffi.cpp)
 
 target_link_libraries(_libtornium_oc_graph_py PRIVATE tornium_oc_graph_abi)
 
-target_compile_options(_libtornium_oc_graph_py PRIVATE -Wall -Wextra -Wshadow -Wconversion -Wsign-conversion -Wunused-parameter -Wno-long-long -pedantic )
+if (NOT MSVC)
+	target_compile_options(_libtornium_oc_graph_py PRIVATE -Wall -Wextra -Wshadow -Wconversion -Wsign-conversion -Wunused-parameter -Wno-long-long -pedantic )
+endif()
+
 target_compile_features(_libtornium_oc_graph_py PRIVATE cxx_std_20)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")

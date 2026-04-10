@@ -41,7 +41,7 @@ diff --git a/c_src/src/generated/crane_reaction.h b/c_src/src/generated/crane_re
 index 639dd0e..e868205 100644
 --- a/c_src/src/generated/crane_reaction.h
 +++ b/c_src/src/generated/crane_reaction.h
-@@ -21,7 +21,7 @@ inline const NodeMap crane_reaction {
+@@ -21,6 +21,6 @@ inline const NodeMap crane_reaction {
  {"_A2F_", TerminalNode{0}},
  {"_A1F_", TerminalNode{0}},
  {"_A5_C1_", Node{[](const SuccessMap &m){ return (sm_position(m, "engineer_1") + sm_position(m, "bomber_1"))/2; }, "_A6_C1_", "_A5_C2_"}},
@@ -49,7 +49,6 @@ index 639dd0e..e868205 100644
 +{"_B7_C1_", Node{[](const SuccessMap &m){ return (sm_position(m, "muscle_1") + sm_position(m, "muscle_2") + sm_position(m, "engineer_1") + sm_position(m, "bomber_1") + sm_position(m, "lookout_1") + sm_position(m, "sniper_1")) / 6; }, "_B7S_", "_B7_C2_"}},
  {"_A7_C2_", Node{[](const SuccessMap &m){ return sm_position(m, "bomber_1"); }, "_A8S2_", "_A7_C3_"}},
  {"_A4_C2_", Node{[](const SuccessMap &m){ return (sm_position(m, "lookout_1") + sm_position(m, "sniper_1"))/2; }, "_A5_C1_", "_A4_C3_"}},
- {"_A8S2_", TerminalNode{1075000000}},
 diff --git a/c_src/src/generated/snow_blind.h b/c_src/src/generated/snow_blind.h
 index 9e8e0ac..18703c5 100644
 --- a/c_src/src/generated/snow_blind.h

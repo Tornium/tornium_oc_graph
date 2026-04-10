@@ -9,7 +9,7 @@ namespace tornium::oc::graph {
 inline const NodeMap crane_reaction{
     {"_A6_C2_", Node{[](const SuccessMap &m) { return (sm_position(m, "muscle_1") + sm_position(m, "muscle_2")) / 2; },
                      "_B7_C1_", "_B6_C1_"}},
-    {"_A8S3_", TerminalNode{1075000000}},
+    {"_A8S3_", TerminalNode{550000000}},
     {"_A1_C3_", Node{[](const SuccessMap &m) { return (sm_position(m, "muscle_1") + sm_position(m, "muscle_2")) / 2; },
                      "_A2_C1_", "_A1F_"}},
     {"_B6_C1_", Node{[](const SuccessMap &m) { return (sm_position(m, "lookout_1") + sm_position(m, "sniper_1")) / 2; },
@@ -43,14 +43,14 @@ inline const NodeMap crane_reaction{
     {"_A7_C2_", Node{[](const SuccessMap &m) { return sm_position(m, "bomber_1"); }, "_A8S2_", "_A7_C3_"}},
     {"_A4_C2_", Node{[](const SuccessMap &m) { return (sm_position(m, "lookout_1") + sm_position(m, "sniper_1")) / 2; },
                      "_A5_C1_", "_A4_C3_"}},
-    {"_A8S2_", TerminalNode{1075000000}},
+    {"_A8S2_", TerminalNode{550000000}},
     {"_B7F_", TerminalNode{0}},
     {"_B6_C2_", Node{[](const SuccessMap &m) { return sm_position(m, "lookout_1"); }, "_B7_C1_", "_B6F_"}},
     {"_A4_C3_", Node{[](const SuccessMap &m) { return (sm_position(m, "muscle_1") + sm_position(m, "muscle_2")) / 2; },
                      "_A5_C1_", "_A4F_"}},
     {"_A3_C1_", Node{[](const SuccessMap &m) { return sm_position(m, "bomber_1"); }, "_A4_C1_", "_A3_C2_"}},
-    {"_A8S_", TerminalNode{1612500000}},
-    {"_B7S2_", TerminalNode{537500000}},
+    {"_A8S_", TerminalNode{550000000}},
+    {"_B7S2_", TerminalNode{550000000}},
     {"_A1_C2_", Node{[](const SuccessMap &m) { return (sm_position(m, "sniper_1") + sm_position(m, "muscle_2")) / 2; },
                      "_A2_C1_", "_A1_C3_"}},
     {"_B5_C2_", Node{[](const SuccessMap &m) {
@@ -72,7 +72,7 @@ inline const NodeMap crane_reaction{
 }, "_A3_C1_", "_A2_C2_"}},
     {"_A3_C2_", Node{[](const SuccessMap &m) { return (sm_position(m, "sniper_1") + sm_position(m, "bomber_1")) / 2; },
                      "_A4_C1_", "_A3F_"}},
-    {"_B7S_", TerminalNode{1075000000}},
+    {"_B7S_", TerminalNode{550000000}},
     {"_B7_C2_", Node{[](const SuccessMap &m) { return (sm_position(m, "sniper_1") + sm_position(m, "lookout_1")) / 2; },
                      "_B7S2_", "_B7F_"}}};
 };  // namespace tornium::oc::graph

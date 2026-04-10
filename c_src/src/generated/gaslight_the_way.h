@@ -26,14 +26,14 @@ inline const NodeMap gaslight_the_way{
     {"_A4_C2_", Node{[](const SuccessMap &m) { return sm_position(m, "looter_3"); }, "_A5_C1_", "_A5_C1_"}},
     {"_A5_C1_", Node{[](const SuccessMap &m) { return (sm_position(m, "looter_2") + sm_position(m, "looter_3")) / 2; },
                      "_A7_C1_", "_B7_C1_"}},
-    {"_A7S2_", TerminalNode{7471406}},
-    {"_A7S_", TerminalNode{6572657}},
+    {"_A7S2_", TerminalNode{7453118}},
+    {"_A7S_", TerminalNode{6563355}},
     {"_A7_C1_", Node{[](const SuccessMap &m) { return sm_position(m, "imitator_2"); }, "_A7S_", "_A7S2_"}},
-    {"_B7S2_", TerminalNode{5390063}},
-    {"_B7S_", TerminalNode{5673908}},
+    {"_B7S2_", TerminalNode{5386892}},
+    {"_B7S_", TerminalNode{5673592}},
     {"_B7_C1_", Node{[](const SuccessMap &m) { return sm_position(m, "imitator_2"); }, "_B7S_", "_B7S2_"}},
     {"_B8F_", TerminalNode{0}},
     {"_B8_C1_", Node{[](const SuccessMap &m) { return sm_position(m, "looter_3"); }, "_B9S_", "_B8F_"}},
-    {"_B9S_", TerminalNode{3852246}}};
+    {"_B9S_", TerminalNode{3860286}}};
 };  // namespace tornium::oc::graph
 #endif

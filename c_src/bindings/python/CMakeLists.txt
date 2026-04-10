@@ -1,19 +1,24 @@
-file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS *.cpp)
-add_library(libtornium_oc_graph_py SHARED ${SOURCES})
+find_package(Python COMPONENTS Development.Module REQUIRED)
+python_add_library(_libtornium_oc_graph_py MODULE ffi.cpp WITH_SOABI)
 
-target_link_libraries(libtornium_oc_graph_py PRIVATE tornium_oc_graph_core)
+target_link_libraries(_libtornium_oc_graph_py PRIVATE tornium_oc_graph_abi)
 
-target_compile_options(libtornium_oc_graph_py PRIVATE -Wall -Wextra -Wshadow -Wconversion -Wsign-conversion -Wunused-parameter -Wno-long-long -pedantic )
-target_compile_features(libtornium_oc_graph_py PRIVATE cxx_std_20)
-
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-	target_compile_options(libtornium_oc_graph_py PRIVATE -O0 -g)
+if (NOT MSVC)
+	target_compile_options(_libtornium_oc_graph_py PRIVATE -Wall -Wextra -Wshadow -Wconversion -Wsign-conversion -Wunused-parameter -Wno-long-long -pedantic )
 endif()
 
-target_include_directories(libtornium_oc_graph_py PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_include_directories(libtornium_oc_graph_py PRIVATE tornium_oc_graph_core)
+target_compile_features(_libtornium_oc_graph_py PRIVATE cxx_std_20)
+
+if (NOT MSVC AND CMAKE_BUILD_TYPE STREQUAL "Debug")
+	target_compile_options(_libtornium_oc_graph_py PRIVATE -O0 -g)
+endif()
+
+# target_include_directories(_libtornium_oc_graph_py PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(_libtornium_oc_graph_py PRIVATE tornium_oc_graph_abi)
+
+set_target_properties(_libtornium_oc_graph_py PROPERTIES OUTPUT_NAME "_libtornium_oc_graph_py")
 
 # Install both libs into the Python package directory so scikit-build-core
 # bundles them into the wheel.
-install(TARGETS libtornium_oc_graph_py LIBRARY DESTINATION tornium_oc_graph)
-install(TARGETS tornium_oc_graph_core LIBRARY DESTINATION tornium_oc_graph)
+install(TARGETS _libtornium_oc_graph_py tornium_oc_graph_abi LIBRARY DESTINATION tornium_oc_graph)
+

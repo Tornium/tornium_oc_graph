@@ -35,7 +35,7 @@ defmodule Tornium.Test.OC.Graph do
       "looter_3"
     ],
     "Gone Fission" => ["hijacker_1", "bomber_1", "engineer_1", "pickpocket_1", "imitator_1"],
-    "Guardian Ángels" => ["hustler_1", "enforcer_1", "engineer_1"],
+    "Guardian Angels" => ["hustler_1", "enforcer_1", "engineer_1"],
     "Honey Trap" => ["enforcer_1", "muscle_1", "muscle_2"],
     "Leave No Trace" => ["techie_1", "negotiator_1", "imitator_1"],
     "Manifest Cruelty" => ["cat_burglar_1", "reviver_1", "hacker_1", "interrogator_1"],

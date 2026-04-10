@@ -1,12 +1,12 @@
-#ifndef GUARDIAN_ÁNGELS_H
-#define GUARDIAN_ÁNGELS_H
+#ifndef GUARDIAN_ANGELS_H
+#define GUARDIAN_ANGELS_H
 
 #include "node.h"
 
 using namespace tornium::oc::graph;
 
 namespace tornium::oc::graph {
-inline const NodeMap guardian_ángels{
+inline const NodeMap guardian_angels{
     {"_A1F_", TerminalNode{0}},
     {"START", Node{[](const SuccessMap &m) { return sm_position(m, "hustler_1"); }, "_A2_C1_", "_A1_C2_"}},
     {"_A1_C2_", Node{[](const SuccessMap &m) { return sm_position(m, "enforcer_1"); }, "_A2_C1_", "_A1_C3_"}},

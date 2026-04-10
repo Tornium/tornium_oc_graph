@@ -17,7 +17,26 @@ Usage::
     })
 """
 
-from tornium_oc_graph._ffi import calculate_ev, calculate_probability
+import typing
+
+from . import _libtornium_oc_graph_py
 
 __all__ = ["calculate_ev", "calculate_probability"]
 __version__ = "0.1.2-dev"
+
+# The `oc_name` must be ASCII. For example, `guardian_ángels` must be `guardian_angels`.
+
+
+def calculate_ev(oc_name: str, success_map: typing.Dict[str, float]) -> float:
+    keys = list(success_map.keys())
+    values = list(success_map.values())
+
+    return _libtornium_oc_graph_py.calculate_ev(oc_name, keys, values)
+
+
+def calculate_probability(oc_name: str, success_map: typing.Dict[str, float]) -> float:
+    keys = list(success_map.keys())
+    values = list(success_map.values())
+
+    return _libtornium_oc_graph_py.calculate_probability(oc_name, keys, values)
+

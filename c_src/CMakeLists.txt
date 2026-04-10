@@ -7,11 +7,12 @@ option(BUILD_ELIXIR_NIF "Build Elixir NIF" ON)
 option(BUILD_PYTHON_FFI "Build Python FFI bindings" ON)
 
 add_subdirectory(src)
+add_subdirectory(bindings/abi)
 
 if(BUILD_ELIXIR_NIF)
 	add_subdirectory(bindings/elixir)
 endif()
 
-if(BUILD_PYTHON_FFI)
+if(SKBUILD OR BUILD_PYTHON_FFI)
 	add_subdirectory(bindings/python)
 endif()

@@ -12,7 +12,7 @@
 #include "generated/crane_reaction.h"
 #include "generated/gaslight_the_way.h"
 #include "generated/gone_fission.h"
-#include "generated/guardian_ángels.h"
+#include "generated/guardian_angels.h"
 #include "generated/honey_trap.h"
 #include "generated/leave_no_trace.h"
 #include "generated/manifest_cruelty.h"
@@ -40,7 +40,7 @@ inline const std::unordered_map<std::string, NodeMap> crime_index = {
     {"Crane Reaction", crane_reaction},
     {"Gaslight the Way", gaslight_the_way},
     {"Gone Fission", gone_fission},
-    {"Guardian Ángels", guardian_ángels},
+    {"Guardian Angels", guardian_angels},
     {"Honey Trap", honey_trap},
     {"Leave No Trace", leave_no_trace},
     {"Manifest Cruelty", manifest_cruelty},

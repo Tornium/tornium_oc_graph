@@ -5,7 +5,10 @@ target_link_libraries(libtornium_oc_graph_ex PRIVATE tornium_oc_graph_core)
 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../priv)
 
-target_compile_options(libtornium_oc_graph_ex PRIVATE -Wall -Wextra -Wshadow -Wconversion -Wsign-conversion -Wunused-parameter -Wno-long-long -pedantic )
+if (NOT MSVC)
+	target_compile_options(libtornium_oc_graph_ex PRIVATE -Wall -Wextra -Wshadow -Wconversion -Wsign-conversion -Wunused-parameter -Wno-long-long -pedantic )
+endif()
+
 target_compile_features(libtornium_oc_graph_ex PRIVATE cxx_std_20)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")

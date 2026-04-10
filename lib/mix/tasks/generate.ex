@@ -47,6 +47,7 @@ defmodule Mix.Tasks.Tornium.Oc.Graph.Generate do
         Path.wildcard("c_src/src/**/*.h") ++
         Path.wildcard("c_src/src/**/*.cpp")
 
+    # TODO: Validate the patch apply before applying it
     System.cmd("git", ["apply", "patch-generated-files.patch"])
     System.cmd("clang-format", ["-i" | files])
   end

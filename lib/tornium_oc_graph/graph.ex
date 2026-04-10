@@ -5,6 +5,8 @@ defmodule Tornium.OC.Graph do
 
   @doc """
   Calculate the expected value of the OC by the map of CPRs of each position.
+
+  The `oc_name` must be ASCII. For example, `guardian_ángels` must be `guardian_angels`.
   """
   @spec calculate_ev(oc_name :: String.t(), success_map :: %{String.t() => 0..100}) ::
           {:ok, float()} | {:error, term()}
@@ -23,6 +25,8 @@ defmodule Tornium.OC.Graph do
 
   @doc """
   Calculate the expected probability of the OC by the map of CPRs for each position.
+
+  The `oc_name` must be ASCII. For example, `guardian_ángels` must be `guardian_angels`.
   """
   @spec calculate_probability(oc_name :: String.t(), success_map :: %{String.t() => 0..100}) ::
           {:ok, float()} | {:error, term()}
@@ -220,6 +224,11 @@ defmodule Tornium.OC.Graph do
         # Average sell value of all obtainable class A cars
         # Calculated from (125000+40000+812500+1075000+1187500+875000+150000+937500+87500)/9
         587_778 * item_quantity
+
+      # Some items that are not frequently traded may need fallback values
+      {%{"id" => 336, "name" => "Cesium-137"}, _} ->
+        550_000_000
+
     end
   end
 

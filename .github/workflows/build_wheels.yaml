@@ -3,9 +3,9 @@ name: Build
 on:
   pull_request:
   workflow_dispatch:
-  push:
-    branches:
-      - master
+  # push:
+  #   branches:
+  #     - master
   release:
     types:
       - published
@@ -78,4 +78,7 @@ jobs:
       - uses: pypa/gh-action-pypi-publish@release/v1
         # To test uploads to TestPyPI, uncomment the following:
         with:
-          repository-url: https://test.pypi.org/legacy/
+          # repository-url: https://test.pypi.org/legacy/
+          repository-url: ${{ github.event_name == 'workflow_dispatch'
+                && 'https://test.pypi.org/legacy/'
+                || 'https://upload.pypi.org/legacy/' }}

@@ -1,5 +1,5 @@
 find_package(Python COMPONENTS Development.Module REQUIRED)
-python_add_library(_libtornium_oc_graph_py MODULE ffi.cpp)
+python_add_library(_libtornium_oc_graph_py MODULE ffi.cpp WITH_SOABI)
 
 target_link_libraries(_libtornium_oc_graph_py PRIVATE tornium_oc_graph_abi)
 
@@ -9,7 +9,7 @@ endif()
 
 target_compile_features(_libtornium_oc_graph_py PRIVATE cxx_std_20)
 
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+if (NOT MSVC AND CMAKE_BUILD_TYPE STREQUAL "Debug")
 	target_compile_options(_libtornium_oc_graph_py PRIVATE -O0 -g)
 endif()
 
@@ -21,5 +21,4 @@ set_target_properties(_libtornium_oc_graph_py PROPERTIES OUTPUT_NAME "_libtorniu
 # Install both libs into the Python package directory so scikit-build-core
 # bundles them into the wheel.
 install(TARGETS _libtornium_oc_graph_py tornium_oc_graph_abi LIBRARY DESTINATION tornium_oc_graph)
-# install(TARGETS tornium_oc_graph_core LIBRARY DESTINATION tornium_oc_graph)
 

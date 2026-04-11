@@ -19,14 +19,22 @@ jobs:
       matrix:
         # macos-15-intel is an Intel runner, macos-14 is Apple silicon
         # os: [ubuntu-latest, ubuntu-24.04-arm, windows-latest, windows-11-arm, macos-15-intel, macos-14]
-        os: [ubuntu-latest, ubuntu-24.04-arm, macos-15-intel, macos-14]
+        os: [ubuntu-latest, ubuntu-24.04-arm]
 
     steps:
       - uses: actions/checkout@v6
         with:
           persist-credentials: false
 
+      - name: Cache wheels
+        id: cache-wheels
+        uses: actions/cache@v4
+        with:
+          path: ./wheelhouse
+          key: ${{ runner.os }}-wheels-${{ hashFiles('pyproject.toml', 'c_src/**', 'python_src/**') }}
+
       - name: Build wheels
+        if: steps.cache-wheels.outputs.cache-hit != 'true'
         uses: pypa/cibuildwheel@v3.4.1
         # env:
         #   CIBW_SOME_OPTION: value

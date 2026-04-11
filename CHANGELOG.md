@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Added Nix Support
+- \[Python\] Added support for wheels
+
+### Changed
+- Changed OC names to use ASCII characters intead of UTF-8 (eg `Guardian Angels`)
+
+### Removed
+- \[Python\] Removed usage of shared objects in the Python bindings
 
 ## v0.1.1 - 2026-03-01
 ### Changed

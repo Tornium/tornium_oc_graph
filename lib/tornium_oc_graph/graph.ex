@@ -5,8 +5,6 @@ defmodule Tornium.OC.Graph do
 
   @doc """
   Calculate the expected value of the OC by the map of CPRs of each position.
-
-  The `oc_name` must be ASCII. For example, `guardian_ángels` must be `guardian_angels`.
   """
   @spec calculate_ev(oc_name :: String.t(), success_map :: %{String.t() => 0..100}) ::
           {:ok, float()} | {:error, term()}
@@ -25,8 +23,6 @@ defmodule Tornium.OC.Graph do
 
   @doc """
   Calculate the expected probability of the OC by the map of CPRs for each position.
-
-  The `oc_name` must be ASCII. For example, `guardian_ángels` must be `guardian_angels`.
   """
   @spec calculate_probability(oc_name :: String.t(), success_map :: %{String.t() => 0..100}) ::
           {:ok, float()} | {:error, term()}

@@ -10,9 +10,10 @@
 #include "generated/clinical_precision.h"
 #include "generated/counter_offer.h"
 #include "generated/crane_reaction.h"
+#include "generated/first_aid_and_abet.h"
 #include "generated/gaslight_the_way.h"
 #include "generated/gone_fission.h"
-#include "generated/guardian_angels.h"
+#include "generated/guardian_ángels.h"
 #include "generated/honey_trap.h"
 #include "generated/leave_no_trace.h"
 #include "generated/manifest_cruelty.h"
@@ -20,6 +21,7 @@
 #include "generated/mob_mentality.h"
 #include "generated/no_reserve.h"
 #include "generated/pet_project.h"
+#include "generated/plucking_the_lotus_petal.h"
 #include "generated/smoke_and_wing_mirrors.h"
 #include "generated/sneaky_git_grab.h"
 #include "generated/snow_blind.h"
@@ -38,9 +40,10 @@ inline const std::unordered_map<std::string, NodeMap> crime_index = {
     {"Clinical Precision", clinical_precision},
     {"Counter Offer", counter_offer},
     {"Crane Reaction", crane_reaction},
+    {"First Aid and Abet", first_aid_and_abet},
     {"Gaslight the Way", gaslight_the_way},
     {"Gone Fission", gone_fission},
-    {"Guardian Angels", guardian_angels},
+    {"Guardian Ángels", guardian_ángels},
     {"Honey Trap", honey_trap},
     {"Leave No Trace", leave_no_trace},
     {"Manifest Cruelty", manifest_cruelty},
@@ -48,6 +51,7 @@ inline const std::unordered_map<std::string, NodeMap> crime_index = {
     {"Mob Mentality", mob_mentality},
     {"No Reserve", no_reserve},
     {"Pet Project", pet_project},
+    {"Plucking the Lotus Petal", plucking_the_lotus_petal},
     {"Smoke and Wing Mirrors", smoke_and_wing_mirrors},
     {"Sneaky Git Grab", sneaky_git_grab},
     {"Snow Blind", snow_blind},

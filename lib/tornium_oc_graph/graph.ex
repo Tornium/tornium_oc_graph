@@ -224,7 +224,6 @@ defmodule Tornium.OC.Graph do
       # Some items that are not frequently traded may need fallback values
       {%{"id" => 336, "name" => "Cesium-137"}, _} ->
         550_000_000
-
     end
   end
 

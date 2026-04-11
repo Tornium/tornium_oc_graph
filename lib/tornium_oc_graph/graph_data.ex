@@ -11,7 +11,7 @@ defmodule Tornium.OC.Graph.Data do
     |> map_crime_graph_urls()
   end
 
-  @doc false
+  @spec get_forum_thread(thread_id :: integer()) :: map()
   defp get_forum_thread(thread_id) when is_integer(thread_id) do
     api_key =
       System.get_env("TORN_API_KEY") ||
@@ -23,7 +23,7 @@ defmodule Tornium.OC.Graph.Data do
     |> Map.get("thread")
   end
 
-  @doc false
+  @spec map_crime_graph_urls(thread_data :: map()) :: %{String.t() => String.t()}
   defp map_crime_graph_urls(%{"content_raw" => thread_body} = _thread_data) do
     thread_body
     |> Floki.parse_document!()

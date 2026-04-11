@@ -2,7 +2,7 @@
 
 python3Packages.buildPythonPackage {
   pname = "tornium_oc_graph";
-  version = "0.1.2-dev";
+  version = "0.2.0";
   pyproject = true;
 
   src = builtins.path{ path = src; };

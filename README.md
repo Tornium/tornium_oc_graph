@@ -33,7 +33,13 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 
 ## Installation: Python
 For installing for Python, the library can be installed through GitHub by installing the library
-through git:
+through pip:
+
+```bash
+pip install tornium_oc_graph
+```
+
+or through GitHub:
 
 ```bash
 pip install git+https://github.com/Tornium/tornium_oc_graph.git

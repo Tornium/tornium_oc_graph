@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Changed code generation to use forum thread to get OC scenario graphs instead of hard-coding them
 
+### Fixed
+- Fixed code generation for the `First Aid and Abet` OC
+
 ### Removed
 - \[Python\] Removed usage of shared objects in the Python bindings
 

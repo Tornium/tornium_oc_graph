@@ -42,12 +42,29 @@ defmodule Mix.Tasks.Tornium.Oc.Graph.Generate do
 
     File.write!("c_src/src/generated/crime_index.h", rendered_index)
 
+    apply_files()
+  end
+
+  defp apply_files() do
+    patch_file = "patch-generated-files.patch"
+
+    {_, exit_code} =
+      System.cmd("git", ["apply", "--check", patch_file], stderr_to_stdout: true)
+
+    if exit_code != 0 do
+      Mix.raise("""
+      Patch check failed: #{patch_file} cannot be applied cleanly.
+
+      Run manually for details:
+        git apply --check #{patch_file}
+      """)
+    end
+
     files =
       Path.wildcard("c_src/bindings/**/*.cpp") ++
         Path.wildcard("c_src/src/**/*.h") ++
         Path.wildcard("c_src/src/**/*.cpp")
 
-    # TODO: Validate the patch apply before applying it
     System.cmd("git", ["apply", "patch-generated-files.patch"])
     System.cmd("clang-format", ["-i" | files])
   end

@@ -36,7 +36,7 @@ For installing for Python, the library can be installed through GitHub by instal
 through pip:
 
 ```bash
-pip install tornium_oc_graph
+pip install tornium-oc-graph
 ```
 
 or through GitHub:
